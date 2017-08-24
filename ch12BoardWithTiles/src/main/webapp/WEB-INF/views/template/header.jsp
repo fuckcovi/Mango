@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="align-center">
-	<h1>회원제 게시판</h1>
+	<h1>first branch</h1>
 </div>
 <div class="align-right">
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a> 
