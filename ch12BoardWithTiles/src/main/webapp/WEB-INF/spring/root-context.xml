@@ -10,21 +10,17 @@
 	    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<!-- 빈 자동 스캔 - servlet-context.xml에서
-	Controller를 자동 스캔 설정해서 아래 설정에서는
-	Controller 자동 스캔 제외 -->
-	<context:component-scan base-package="kr.spring">
+	<!-- 빈 자동 스캔 - servlet-context.xml에서 Controller를 자동 스캔 설정해서 아래 설정에서는 Controller 자동 스캔 제외 -->
+	<context:component-scan base-package="com.anticovi">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
 	<!-- JDBC 기반 트랜잭션 관리자 설정 -->
-	<bean id="transactionManager"
-	  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-	  p:dataSource-ref="dataSource"/>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource"/>
 	  	
 	<context:property-placeholder location="classpath:config/jdbc.properties"/>	
 		
-	<!-- 커넥션 풀을 이용한 DtaSource 설정 -->		
+	<!-- 커넥션 풀을 이용한 DataSource 설정 -->		
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
 		<property name="url" value="${jdbc.url}"/>
@@ -40,32 +36,17 @@
 		<property name="maxWait" value="5"/>
 	</bean>	
 	
-	<!-- 어노테이션 방식 트랜잭션 처리를 위한
-	transactionManager 등록 -->
-	<tx:annotation-driven 
-	transaction-manager="transactionManager"/>
+	<!-- 어노테이션 방식 트랜잭션 처리를 위한 transactionManager 등록 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 	<!-- mybatis 설정 -->
-	<bean id="sqlSessionFactory"
-	   class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	   	<property name="dataSource" ref="dataSource"/>
 	   	<!-- 커맨드객체(자바빈)을 등록 -->
-	   	<property name="typeAliasesPackage" 
-	   	               value="kr.spring.member.domain,
-	   	                      kr.spring.board.domain"/>
+	   	<property name="typeAliasesPackage" value="com.anticovi.mango.member.domain"/>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- DAO 등록 -->
-		<property name="basePackage" value="kr.spring.member.dao,
-		                                    kr.spring.board.dao"/>
+		<property name="basePackage" value="com.anticovi.mango.member.dao"/>
 	</bean>
 </beans>
-
-
-
-
-
-
-
-
-

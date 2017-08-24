@@ -6,16 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css"> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainLayout.css">
 </head>
 <body>
 <div id="main">
 	<div id="main_header">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div id="main_menu">
+	<%-- <div id="main_menu">
 		<tiles:insertAttribute name="menu"/>
-	</div>
+	</div> --%>
 	<div id="main_body">
 		<tiles:insertAttribute name="body"/>
 	</div>
