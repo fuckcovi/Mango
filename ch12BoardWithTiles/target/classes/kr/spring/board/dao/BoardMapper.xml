@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="kr.spring.board.dao.BoardMapper"> 
+	<select id="list" parameterType="map"
+	                          resultType="boardCommand">
+		SELECT
+		  *
+		FROM (SELECT
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		             b.seq,
+					 <![CDATA[
+					 REPLACE(REPLACE(b.title,'<','&lt;'),'>','&gt;') title,
+					 ]]>
+					 b.hit,
+					 b.regdate,
+					 b.id,
+					 r.reply_cnt
+		           FROM spboard b LEFT JOIN (SELECT seq,count(*) reply_cnt 
+		                                     FROM spboard_reply 
+		                                     GROUP BY seq)r
+		                               ON b.seq = r.seq
+		           <where>
+		           	<if test="keyword != '' and keyfield == 'title'">
+		           		b.title like '%' || #{keyword} || '%'
+		           	</if>
+		           	<if test="keyword != '' and keyfield == 'id'">
+		           		b.id like '%' || #{keyword} || '%'
+		           	</if>
+		           	<if test="keyword != '' and keyfield == 'content'">
+		           		b.content like '%' || #{keyword} || '%'
+		           	</if>
+		           	<if test="keyword != '' and keyfield == 'all'">
+		           		b.title like '%' || #{keyword} || '%' or
+		           		b.id like '%' || #{keyword} || '%' or
+		           		b.content like '%' || #{keyword} || '%'
+		           	</if>
+		           </where>
+		           ORDER BY b.seq DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	           
+	</select>
+	
+	<select id="getRowCount" parameterType="map" 
+	                         resultType="integer">
+		SELECT
+		   count(*)
+		FROM spboard 
+		<where>
+        	<if test="keyword != '' and keyfield == 'title'">
+        		title like '%' || #{keyword} || '%'
+        	</if>
+        	<if test="keyword != '' and keyfield == 'id'">
+        		id like '%' || #{keyword} || '%'
+        	</if>
+        	<if test="keyword != '' and keyfield == 'content'">
+        		content like '%' || #{keyword} || '%'
+        	</if>
+        	<if test="keyword != '' and keyfield == 'all'">
+        		title like '%' || #{keyword} || '%' or
+        		id like '%' || #{keyword} || '%' or
+        		content like '%' || #{keyword} || '%'
+        	</if>
+        </where>                        
+	</select>
+	
+	<select id="listReply" parameterType="map"
+	                           resultType="boardReplyCommand">
+		SELECT
+		   re_no,
+		   re_content,
+		   to_char(re_date,'YYYY-MM-DD HH24:MI:SS') re_date,
+		   seq,
+		   id
+		FROM (SELECT
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              *
+		           FROM spboard_reply
+		           WHERE seq = #{seq}
+		           ORDER BY re_no DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>                                         
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
