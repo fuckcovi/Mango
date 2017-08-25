@@ -1,7 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var checkDuplicated = 0;
+		$("#m_id").blur(function(){
+			if($("#m_id").val()==""){
+				$("#loading").show();
+				$("#confirmId").text("");
+				return;
+			}
+			$("#confirmId").text("");
+			$("#loading").show();
+			
+			$.ajax({
+				url:"confirmId.do",
+				type:"post",
+				data:{m_id:$("#m_id").val()},
+				dataType:"json",
+				cache:false,
+				timeout:30000,
+				success:function(data){
+					$("#loading").hide();
+					if(data.result=="idNotFound"){
+						$("#confirmId").css("color","black").text("사용가능한 아이디");
+						checkTnameDuplicated=1;
+					}else if(data.result=="idDuplicated"){
+						$("#confirmId").css("color","red").text("이미 등록된 아이디");
+						checkTnameDuplicated=0;
+					}else{
+						alert("아이디 중복체크 오류 발생");
+						checkTnameDuplicated=0;
+					}
+				},
+				error:function(){
+					$("#loading").hide();
+					alert("아이디 중복체크 실패 - 네트워크 오류 발생");
+				}
+			});
+		
+		})
+	})
+</script>
 <form:form commandName="memberCommand" >
 <table>
 <tr>
@@ -10,7 +51,10 @@
 	</th>
 	<td>
 		<form:input path="m_id"/>
+		<span id="confirmId"></span>
+		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" width="16" height="16" style="display:none">
 	</td>
+	<td><form:errors path="m_id" cssClass="error-color"/></td>
 </tr>
 <tr>
 	<th>
@@ -19,6 +63,7 @@
 	<td>
 		<form:password path="m_pw"/>
 	</td>
+	<td><form:errors path="m_pw" cssClass="error-color"/></td>
 </tr>
 <tr>
 	<th>
@@ -27,6 +72,7 @@
 	<td>
 		<form:input path="m_name"/>
 	</td>
+	<td><form:errors path="m_name" cssClass="error-color"/></td>
 </tr>
 <tr>
 	<th>
@@ -59,6 +105,8 @@
 		</tr>
 		</table>
 	</td>
+	<td><form:errors path="m_phone2" cssClass="error-color"/>
+		<form:errors path="m_phone3" cssClass="error-color"/></td>
 </tr>
 <tr>
 	<th>	
@@ -67,6 +115,7 @@
 	<td>
 		<input type="date" id="m_birth" name="m_birth">
 	</td>
+	<td><form:errors path="m_birth" cssClass="error-color"/></td>
 </tr>
 <tr>
 	<th>	
@@ -75,6 +124,7 @@
 	<td>
 		<form:input path="m_address1"/>
 	</td>
+	<td><form:errors path="m_address1" cssClass="error-color"/></td>
 </tr>
 <tr>
 	<th>	
