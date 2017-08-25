@@ -19,7 +19,7 @@ public class MemberCommand {
 	@NotEmpty
 	private String m_phone3;
 	@NotEmpty
-	private Date m_birth;
+	private String m_birth;
 	@NotEmpty
 	private String m_address1;
 	private String m_address2;
@@ -27,6 +27,7 @@ public class MemberCommand {
 	private String m_mydevice2;
 	private String m_mydevice3;
 	private int m_status;
+	
 	public int getM_seq() {
 		return m_seq;
 	}
@@ -69,10 +70,10 @@ public class MemberCommand {
 	public void setM_phone3(String m_phone3) {
 		this.m_phone3 = m_phone3;
 	}
-	public Date getM_birth() {
+	public String getM_birth() {
 		return m_birth;
 	}
-	public void setM_birth(Date m_birth) {
+	public void setM_birth(String m_birth) {
 		this.m_birth = m_birth;
 	}
 	public String getM_address1() {
@@ -111,6 +112,7 @@ public class MemberCommand {
 	public void setM_status(int m_status) {
 		this.m_status = m_status;
 	}
+	
 	@Override
 	public String toString() {
 		return "MemberCommand [m_seq=" + m_seq + ", m_id=" + m_id + ", m_pw=" + m_pw + ", m_name=" + m_name
@@ -119,7 +121,4 @@ public class MemberCommand {
 				+ ", m_mydevice2=" + m_mydevice2 + ", m_mydevice3=" + m_mydevice3 + ", m_status=" + m_status + "]";
 	}
 
-	
-	
-	
 }
