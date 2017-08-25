@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css"> --%>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.PNG" type="image/x-icon" />
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.PNG" type="image/x-icon" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainLayout.css">
 </head>
 <body>

@@ -13,12 +13,13 @@
 	position: fixed;
 	min-width: 600px;
 	width: 100%;
-	height: 150px;
+	height: 120px;
 	z-index: 999;
 }
 #main_body {
 	position: relative;
-	top: 150px;
+	top: 120px;
+	margin: 0 auto;
 	padding: 20px;
 	min-height: 900px;
 	text-align: center;
@@ -27,20 +28,36 @@
 	padding: 20px;
 	height: 120px;
 	text-align: center;
-	font-size: 16pt;
+	font-size: 10pt;
 	background: #FFC000;
 }
 /* main_header */
+#main_header ul li {
+	display: inline;
+	padding-left:10px;
+	line-height:10px;
+	border-left:1px solid #333333;
+}
+#main_header ul li:first-child {
+	border-left:none;
+}
 #user-bar {
 	padding-right: 100px;
-	height: 40px;
+	height: 30px;
 	text-align: right;
-	font-size: 14pt;
+	font-size: 10pt;
 	background: #FFC000;
+}
+#user-bar a {
+	text-decoration:none;
+	color: #333333;
+}
+#user-bar a:hover {
+	font-weight: bold;
 }
 #menu-bar {
 	padding-left: 100px;
-	height: 110px;
+	height: 90px;
 	border-bottom: 1px solid #BDBDBD;
 	background: #FFF;
 }

@@ -23,4 +23,5 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 		}
 		return true;
 	}
+	
 }
