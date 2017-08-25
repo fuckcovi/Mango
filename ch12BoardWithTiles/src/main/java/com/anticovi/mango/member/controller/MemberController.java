@@ -13,7 +13,7 @@ import com.anticovi.mango.member.service.MemberService;
 
 @Controller
 public class MemberController {
-private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource
 	private MemberService memberService;
