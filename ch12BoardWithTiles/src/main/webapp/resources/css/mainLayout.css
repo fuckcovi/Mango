@@ -4,6 +4,9 @@
 	margin: 0;
 	padding: 0;
 }
+body {
+	font-family:"나눔고딕";
+}
 /* layout */
 #main {
 	width: 100%;
@@ -11,44 +14,52 @@
 }
 #main_header {
 	position: fixed;
-	min-width: 600px;
 	width: 100%;
-	height: 120px;
+	height: 100px;
 	z-index: 999;
 }
 #main_body {
 	position: relative;
-	top: 120px;
+	top: 100px;
 	margin: 0 auto;
-	padding: 20px;
-	min-height: 900px;
+	padding: 10px;
+	min-width: 800px;
+	width: 80%;
+	min-height: 800px;
 	text-align: center;
 }
 #main_footer {
-	padding: 20px;
+	position: relative;
+	bottom: -100px;
+	padding: 10px;
 	height: 120px;
 	text-align: center;
 	font-size: 10pt;
 	background: #FFC000;
 }
 /* main_header */
-#main_header ul li {
-	display: inline;
-	padding-left:10px;
-	line-height:10px;
-	border-left:1px solid #333333;
-}
-#main_header ul li:first-child {
-	border-left:none;
-}
 #user-bar {
-	padding-right: 100px;
 	height: 30px;
 	text-align: right;
-	font-size: 10pt;
+	font-size: 9pt;
 	background: #FFC000;
 }
-#user-bar a {
+#user-bar ul {
+	padding-top: 7px;
+}
+#user-bar ul li {
+	display: inline;
+	padding-left: 12px;
+	padding-right: 10px;
+	border-left: 1px solid #333333;
+}
+#user-bar ul li:first-child {
+	border-left: none;
+}
+#user-bar ul li:last-child {
+	padding-right: 0;
+}
+#user-bar a, #menu-bar a {
 	text-decoration:none;
 	color: #333333;
 }
@@ -56,8 +67,24 @@
 	font-weight: bold;
 }
 #menu-bar {
-	padding-left: 100px;
-	height: 90px;
+	height: 70px;
 	border-bottom: 1px solid #BDBDBD;
 	background: #FFF;
+}
+#menu-bar ul {
+	display: table-cell;
+	vertical-align: middle;
+}
+#menu-bar ul li {
+	display: inline;
+	margin-left: 30px;
+}
+#menu-bar a:hover {
+	color: #FFC000;
+}
+.sub-bar {
+	margin: 0 auto;
+	min-width: 800px;
+	width: 80%;
+	height: 100%;
 }
