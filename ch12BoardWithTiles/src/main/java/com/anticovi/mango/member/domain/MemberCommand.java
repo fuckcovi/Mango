@@ -19,7 +19,7 @@ public class MemberCommand {
 	@NotEmpty
 	private String m_phone3;
 	@NotEmpty
-	private Date m_birth;
+	private String m_birth;
 	@NotEmpty
 	private String m_address1;
 	private String m_address2;
@@ -70,10 +70,10 @@ public class MemberCommand {
 	public void setM_phone3(String m_phone3) {
 		this.m_phone3 = m_phone3;
 	}
-	public Date getM_birth() {
+	public String getM_birth() {
 		return m_birth;
 	}
-	public void setM_birth(Date m_birth) {
+	public void setM_birth(String m_birth) {
 		this.m_birth = m_birth;
 	}
 	public String getM_address1() {

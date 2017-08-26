@@ -1,6 +1,6 @@
-MANGO : ¸Á°í, ³ë¶û
+MANGO : ë§ê³ , ë…¸ëž‘
 
-------------- Åë½Å»çÈ¸¿ø°¡ÀÔ : ÇÚµåÆù ÀÎÁõÇØ¾ßÇÏ´Ï±ñ ÇÚµåÆùÀº ²À ÀÔ·ÂµÊ. ¸¶ÀÌµð¹ÙÀÌ½º µî·Ï 3°³±îÁö. 1=ÀÏ¹ÝÈ¸¿ø,0=Å»ÅðÈ¸¿ø,9=°ü¸®ÀÚ, 2=½Ç¹ö,3=°ñµå,4=VIP 1³â,6°³¿ùµî ½ÇÀû¿¡µû¶ó º¯°æ.----------------
+------------- í†µì‹ ì‚¬íšŒì›ê°€ìž… : í•¸ë“œí° ì¸ì¦í•´ì•¼í•˜ë‹ˆê¹ í•¸ë“œí°ì€ ê¼­ ìž…ë ¥ë¨. ë§ˆì´ë””ë°”ì´ìŠ¤ ë“±ë¡ 3ê°œê¹Œì§€. 1=ì¼ë°˜íšŒì›,0=íƒˆí‡´íšŒì›,9=ê´€ë¦¬ìž, 2=ì‹¤ë²„,3=ê³¨ë“œ,4=VIP 1ë…„,6ê°œì›”ë“± ì‹¤ì ì—ë”°ë¼ ë³€ê²½.----------------
 CREATE TABLE MEMBER(
 	M_SEQ NUMBER PRIMARY KEY,
 	M_ID VARCHAR2(50) NOT NULL UNIQUE,
@@ -9,7 +9,7 @@ CREATE TABLE MEMBER(
 	M_PHONE1 VARCHAR2(3) NOT NULL,
 	M_PHONE2 VARCHAR2(4) NOT NULL,
 	M_PHONE3 VARCHAR2(4) NOT NULL,
-	M_BIRTH DATE NOT NULL,
+	M_BIRTH VARCHAR2(20) NOT NULL,
 	M_ADDRESS1 VARCHAR2(200) NOT NULL,
 	M_ADDRESS2 VARCHAR2(200),
 	M_MYDEVICE1 VARCHAR2(10),
@@ -17,8 +17,8 @@ CREATE TABLE MEMBER(
 	M_MYDEVICE3 VARCHAR2(10),
 	M_STATUS NUMBER DEFAULT(1)
 );
-
-------------- °ü¸®ÀÚ±â±âµî·Ï : NAMEÀº ±â±â¸í(°¶·°½Ã), MODLENUMÀº ¸ðµ¨¸í(MS23JD), REGDATE°¡ ³ÎÀÌ¸é Ãâ½Ã¿¹Á¤Ç¥½Ã ----------------
+CREATE SEQUENCE MEMBER_SEQ;
+------------- ê´€ë¦¬ìžê¸°ê¸°ë“±ë¡ : NAMEì€ ê¸°ê¸°ëª…(ê°¤ëŸ­ì‹œ), MODLENUMì€ ëª¨ë¸ëª…(MS23JD), REGDATEê°€ ë„ì´ë©´ ì¶œì‹œì˜ˆì •í‘œì‹œ ----------------
 CREATE TABLE DEVICE(
 	D_SEQ NUMBER PRIMARY KEY,
 	D_NAME VARCHAR2(50) NOT NULL,
@@ -26,8 +26,8 @@ CREATE TABLE DEVICE(
 	D_REGDATE DATE,
 	D_TYPE VARCHAR2(30) NOT NULL
 );
-
----------- ±â±â Á¤º¸ : COLORº°·Î »óÇ°µî·Ï. PRICE°¡ ³ÎÀÎ °æ¿ì È­¸é¿¡¼­ Ãâ½Ã¿¹Á¤,±Ý¾×ÃßÈÄ¿¹Á¤ µî Ç¥½Ã-----------------
+CREATE SEQUENCE DEVICE_SEQ;
+---------- ê¸°ê¸° ì •ë³´ : COLORë³„ë¡œ ìƒí’ˆë“±ë¡. PRICEê°€ ë„ì¸ ê²½ìš° í™”ë©´ì—ì„œ ì¶œì‹œì˜ˆì •,ê¸ˆì•¡ì¶”í›„ì˜ˆì • ë“± í‘œì‹œ-----------------
 CREATE TABLE DEVICEINFO(
 	DI_SEQ NUMBER PRIMARY KEY,
 	D_SEQ NUMBER NOT NULL,
@@ -38,14 +38,7 @@ CREATE TABLE DEVICEINFO(
 	DI_PRICE NUMBER,
 	CONSTRAINT DEVICEINFO_FK1 FOREIGN KEY (D_SEQ) REFERENCES DEVICE(D_SEQ)
 );
-
-------------- ÇÚµåÆù¿ä±ÝÁ¦ ----------------------
+CREATE SEQUENCE DEVICEINFO_SEQ;
+------------- í•¸ë“œí°ìš”ê¸ˆì œ ----------------------
 CREATE TABLE 
-
-
-
-
-
-
-
 

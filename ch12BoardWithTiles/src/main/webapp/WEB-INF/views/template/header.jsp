@@ -5,7 +5,7 @@
 	<div class="sub-bar">
 		<c:if test="${empty user_id}">
 		<ul>
-			<li><a href="#">로그인</a></li>
+			<li><a href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
 			<li><a href="${pageContext.request.contextPath}/member/join.do">회원가입</a></li>
 		</ul>
 		</c:if>
