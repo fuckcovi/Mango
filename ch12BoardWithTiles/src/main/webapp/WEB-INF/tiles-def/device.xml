@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="deviceMain" extends="main">
+     	<put-attribute name="title" value="다이렉트샵 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/deviceMain.jsp"/>
+    </definition>
+    <definition name="registerDeviceForm" extends="main">
+     	<put-attribute name="title" value="상품등록 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/registerDeviceForm.jsp"/>
+    </definition>
+    
+</tiles-definitions>

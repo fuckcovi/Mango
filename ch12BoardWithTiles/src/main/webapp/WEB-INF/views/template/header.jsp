@@ -12,6 +12,7 @@
 		<c:if test="${!empty user_id}">
 		<ul>
 			<li>${user_id}</li>
+			<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 		</ul>
 		</c:if>
 	</div>
@@ -23,8 +24,8 @@
 		</div>
 		<div style="float:right;height:100%;display:table;">
 			<ul>
-				<li><a href="#">상품서비스</a></li>
-				<li><a href="#">다이렉트샵</a></li>
+				<li><a href="${pageContext.request.contextPath}/plan/callingplan.do">상품서비스</a></li>
+				<li><a href="${pageContext.request.contextPath}/device/device.do">다이렉트샵</a></li>
 				<li><a href="#">멤버십</a></li>
 				<li><a href="#">이벤트</a></li>
 				<li><a href="#">고객센터</a></li>

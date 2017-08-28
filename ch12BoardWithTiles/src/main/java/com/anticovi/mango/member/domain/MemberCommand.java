@@ -27,7 +27,21 @@ public class MemberCommand {
 	private String m_mydevice2;
 	private String m_mydevice3;
 	private int m_status;
+	private Date m_regdate;
 	
+	public boolean isCheckedPw(String user_pw){
+		if(m_pw.equals(user_pw)){
+			return true;
+		}
+		return false;
+	}
+	
+	public Date getM_regdate() {
+		return m_regdate;
+	}
+	public void setM_regdate(Date m_regdate) {
+		this.m_regdate = m_regdate;
+	}
 	public int getM_seq() {
 		return m_seq;
 	}
@@ -112,13 +126,14 @@ public class MemberCommand {
 	public void setM_status(int m_status) {
 		this.m_status = m_status;
 	}
-	
 	@Override
 	public String toString() {
 		return "MemberCommand [m_seq=" + m_seq + ", m_id=" + m_id + ", m_pw=" + m_pw + ", m_name=" + m_name
 				+ ", m_phone1=" + m_phone1 + ", m_phone2=" + m_phone2 + ", m_phone3=" + m_phone3 + ", m_birth="
 				+ m_birth + ", m_address1=" + m_address1 + ", m_address2=" + m_address2 + ", m_mydevice1=" + m_mydevice1
-				+ ", m_mydevice2=" + m_mydevice2 + ", m_mydevice3=" + m_mydevice3 + ", m_status=" + m_status + "]";
+				+ ", m_mydevice2=" + m_mydevice2 + ", m_mydevice3=" + m_mydevice3 + ", m_status=" + m_status
+				+ ", m_regdate=" + m_regdate + "]";
 	}
+	
 
 }
