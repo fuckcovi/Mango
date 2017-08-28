@@ -12,6 +12,7 @@
 		<c:if test="${!empty user_id}">
 		<ul>
 			<li>${user_id}</li>
+			<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 		</ul>
 		</c:if>
 	</div>
@@ -33,7 +34,7 @@
 			<nav id="topMenu">
 				<ul> 
 					<li class="topMenuLi"> 
-						<a class="menuLink" href="#">상품서비스</a> 
+						<a class="menuLink" href="${pageContext.request.contextPath}/plan/callingplan.do">상품서비스</a> 
 						<ul class="submenu">
 							<li><a href="#" class="submenuLink">휴대폰 요금제</a></li>
 							<li><a href="#" class="submenuLink">부가서비스</a></li>
@@ -41,7 +42,7 @@
 						</ul>
 					</li>
 					<li class="topMenuLi">
-						<a class="menuLink" href="#">다이렉트샵</a>
+						<a class="menuLink" href="${pageContext.request.contextPath}/device/device.do">다이렉트샵</a>
 						<ul class="submenu">
 							<li><a href="#" class="submenuLink">휴대폰</a></li>
 							<li><a href="#" class="submenuLink">태블릿</a></li>
