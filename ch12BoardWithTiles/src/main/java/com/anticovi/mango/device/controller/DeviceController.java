@@ -23,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.anticovi.mango.device.domain.DeviceCommand;
 import com.anticovi.mango.device.domain.DeviceInfoCommand;
 import com.anticovi.mango.device.service.DeviceService;
-import com.sun.javafx.sg.prism.NGShape.Mode;
 
 @Controller
 public class DeviceController {
@@ -95,13 +94,49 @@ public class DeviceController {
 		return mav;
 	}
 	
-	@RequestMapping("/device/imageView.do")
+	@RequestMapping("/device/imageView1.do")
+	public ModelAndView viewImage1(@RequestParam int d_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image1());
+		mav.addObject("filename", device.getDi_imagename1());
+		return mav;
+	}
+	@RequestMapping("/device/imageView2.do")
+	public ModelAndView viewImage2(@RequestParam int d_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image2());
+		mav.addObject("filename", device.getDi_imagename2());
+		return mav;
+	}
+	@RequestMapping("/device/imageView3.do")
+	public ModelAndView viewImage3(@RequestParam int d_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image3());
+		mav.addObject("filename", device.getDi_imagename3());
+		return mav;
+	}
+	@RequestMapping("/device/imageView4.do")
+	public ModelAndView viewImage4(@RequestParam int d_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image4());
+		mav.addObject("filename", device.getDi_imagename4());
+		return mav;
+	}
+	@RequestMapping("/device/imageView5.do")
 	public ModelAndView viewImageTeamLogo(@RequestParam int d_seq){
 		DeviceCommand device = deviceService.deviceInfo(d_seq);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("imageFile",device.getDi_image());
-		mav.addObject("filename", device.getDi_imagename());
+		mav.addObject("imageFile",device.getDi_image5());
+		mav.addObject("filename", device.getDi_imagename5());
 		return mav;
 	}
 }
