@@ -1,3 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-회원가입완료됬다고 망고가 귀엽게 나오면서 짜잔~
+<h3 style="font-weight:bold;">회원가입이 완료되었습니다</h3>
+<img src="${pageContext.request.contextPath}/resources/images/mango_img2.PNG"><br>
