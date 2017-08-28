@@ -84,6 +84,16 @@ public class DeviceController {
 		deviceService.insertDeviceInfo(deviceInfoCommand);
 		return deviceMain();
 	}
+	@RequestMapping(value="/device/modifyDeviceInfo.do",method=RequestMethod.GET)
+	public ModelAndView modifyDeviceInfoForm(@RequestParam int d_seq){
+		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(d_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("modifyDeviceInfoForm");
+		mav.addObject("deviceInfo", deviceInfo);
+		mav.addObject("d_seq", d_seq);
+		return mav;
+	}
+	
 	
 	@RequestMapping(value="/device/deviceInfo.do",method=RequestMethod.GET)
 	public ModelAndView deviceInfo(@RequestParam int d_seq){

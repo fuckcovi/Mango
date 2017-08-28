@@ -13,6 +13,8 @@ public interface DeviceService {
 	public List<DeviceCommand> allDeviceList();
 	@Transactional(readOnly=true)
 	public DeviceCommand deviceInfo(Integer d_seq);
+	@Transactional(readOnly=true)
+	public DeviceInfoCommand selectDeviceInfo(Integer d_seq);
 	public void insertDevice(DeviceCommand device);
 	public void insertDeviceInfo(DeviceInfoCommand deviceInfo);
 }

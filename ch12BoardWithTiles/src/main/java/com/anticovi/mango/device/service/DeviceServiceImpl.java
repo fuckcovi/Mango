@@ -30,6 +30,10 @@ public class DeviceServiceImpl implements DeviceService {
 	public DeviceCommand deviceInfo(Integer d_seq) {
 		return deviceMapper.deviceInfo(d_seq);
 	}
+	@Override
+	public DeviceInfoCommand selectDeviceInfo(Integer d_seq) {
+		return deviceMapper.selectDeviceInfo(d_seq);
+	}
 	
 
 }
