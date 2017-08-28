@@ -81,6 +81,7 @@ public class MemberController {
 			}else if(check && member.getM_status()==9){
 				System.out.println("ADMIN Login!!");
 				session.setAttribute("user_id", user_id);
+				session.setAttribute("user_status", member.getM_status());
 				return "redirect:/main/main.do";
 			}else{
 				result.reject("invalidIdOrPassword");
