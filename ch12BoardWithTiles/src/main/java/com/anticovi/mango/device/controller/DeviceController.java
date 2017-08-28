@@ -86,8 +86,22 @@ public class DeviceController {
 		return deviceMain();
 	}
 	
-	@RequestMapping(value="/device/diviceInfo.do",method=RequestMethod.GET)
-	public String diviceInfo(){
-		return "diviceInfo";
+	@RequestMapping(value="/device/deviceInfo.do",method=RequestMethod.GET)
+	public ModelAndView deviceInfo(@RequestParam int d_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("deviceInfo");
+		mav.addObject("device", device);
+		return mav;
+	}
+	
+	@RequestMapping("/device/imageView.do")
+	public ModelAndView viewImageTeamLogo(@RequestParam int d_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image());
+		mav.addObject("filename", device.getDi_imagename());
+		return mav;
 	}
 }

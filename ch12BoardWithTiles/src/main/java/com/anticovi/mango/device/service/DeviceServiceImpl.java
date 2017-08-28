@@ -26,10 +26,10 @@ public class DeviceServiceImpl implements DeviceService {
 	public void insertDeviceInfo(DeviceInfoCommand deviceInfo) {
 		deviceMapper.insertDeviceInfo(deviceInfo);
 	}
-	/*@Override
+	@Override
 	public DeviceCommand deviceInfo(Integer d_seq) {
 		return deviceMapper.deviceInfo(d_seq);
-	}*/
+	}
 	
 
 }

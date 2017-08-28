@@ -11,8 +11,8 @@ import com.anticovi.mango.device.domain.DeviceInfoCommand;
 public interface DeviceService {
 	@Transactional(readOnly=true)
 	public List<DeviceCommand> allDeviceList();
-/*	@Transactional(readOnly=true)
-	public DeviceCommand deviceInfo(Integer d_seq);*/
+	@Transactional(readOnly=true)
+	public DeviceCommand deviceInfo(Integer d_seq);
 	public void insertDevice(DeviceCommand device);
 	public void insertDeviceInfo(DeviceInfoCommand deviceInfo);
 }
