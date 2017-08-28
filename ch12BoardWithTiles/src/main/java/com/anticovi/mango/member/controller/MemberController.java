@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -50,8 +51,45 @@ public class MemberController {
 		return "memberJoin";
 	}
 	@RequestMapping(value="/member/login.do",method=RequestMethod.GET)
-	public String memberLogin(){
+	public String memberLoginForm(){
 		return "memberLoginForm";
+	}
+	@RequestMapping(value="/member/login.do",method=RequestMethod.POST)
+	public String memberLogin(@ModelAttribute("memberCommand")@Valid MemberCommand memberCommand, BindingResult result, HttpSession session){
+		if(log.isDebugEnabled()){
+			log.debug("<<로그인 요청한  - memberCommand>> : " + memberCommand);
+		}
+		if(result.hasFieldErrors("m_id") ||
+				result.hasFieldErrors("m_pw") ){
+			return memberLoginForm();
+		}
+		String user_id = memberCommand.getM_id();
+		String user_pw = memberCommand.getM_pw();
+		try{
+			MemberCommand member = memberService.selectMemberForId(user_id);
+			boolean check = false;
+			if(member != null){
+				check = member.isCheckedPw(user_pw);
+			}
+			if(check && (member.getM_status()==1||member.getM_status()==2||member.getM_status()==3||member.getM_status()==4)){
+				session.setAttribute("user_id", user_id);
+				session.setAttribute("user_status", member.getM_status());
+				return "redirect:/main/main.do";
+			}else if(check && member.getM_status()==0){
+				result.reject("unableMember");
+				return memberLoginForm();
+			}else if(check && member.getM_status()==9){
+				System.out.println("ADMIN Login!!");
+				session.setAttribute("user_id", user_id);
+				return "redirect:/main/main.do";
+			}else{
+				result.reject("invalidIdOrPassword");
+				return memberLoginForm();
+			}
+		}catch(Exception e){
+			result.reject("loginError");
+			return memberLoginForm();
+		}
 	}
 	
 	@RequestMapping(value="/member/confirmId.do")
@@ -69,5 +107,10 @@ public class MemberController {
 			map.put("result", "idNotFound");
 		}
 		return map;
+	}
+	@RequestMapping("/member/logout.do")
+	public String logout(HttpSession session){
+		session.invalidate();
+		return "redirect:/main/main.do";
 	}
 }

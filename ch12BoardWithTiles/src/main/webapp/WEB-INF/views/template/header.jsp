@@ -12,6 +12,7 @@
 		<c:if test="${!empty user_id}">
 		<ul>
 			<li>${user_id}</li>
+			<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 		</ul>
 		</c:if>
 	</div>
