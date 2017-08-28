@@ -14,6 +14,25 @@
 			<c:if test="${device.d_regdate != null}">${device.d_regdate}</c:if></li>
 		<li>${device.d_type}</li>
 		<li>${device.d_explain}</li>
+		<li>
+		
+		<c:if test="${user_status == 9 }">
+			<c:if test="${device.di_seq == 0 }">
+				<input type="button" value="상세등록" onclick="location.href='${pageContext.request.contextPath}/device/registerDeviceInfo.do?d_seq=${device.d_seq}'">
+			</c:if> 
+			<c:if test="${device.di_seq != 0}">
+				<input type="button" value="상세수정" onclick="location.href='${pageContext.request.contextPath}/device/modifyDeviceInfo.do?d_seq=${device.d_seq}'">
+			</c:if>
+		</c:if>
+		<c:if test="${user_status != 9 }">
+			<c:if test="${device.di_seq == 0 }">
+				상세정보없음.
+			</c:if> 
+			<c:if test="${device.di_seq != 0}">
+				<input type="button" value="자세히보기" onclick="location.href='${pageContext.request.contextPath}/device/deviceInfo.do?d_seq=${device.d_seq}'">
+			</c:if>
+		</c:if>
+		</li>
 	</ul>	
 	</div>
 </c:forEach>

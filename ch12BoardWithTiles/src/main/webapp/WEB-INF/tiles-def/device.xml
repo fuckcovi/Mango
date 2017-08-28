@@ -13,5 +13,8 @@
      	<put-attribute name="title" value="상품등록 | Mango"/>
      	<put-attribute name="body" value="/WEB-INF/views/device/registerDeviceForm.jsp"/>
     </definition>
-    
+    <definition name="registerDeviceInfoForm" extends="main">
+     	<put-attribute name="title" value="상품상세등록 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/registerDeviceInfoForm.jsp"/>
+    </definition>
 </tiles-definitions>
