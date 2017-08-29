@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.anticovi.mango.callingPlan.dao.CallingPlanMapper"> 
+	<select id="allCpList" parameterType="map" resultType="callingPlanCommand">
+	SELECT * FROM callingplan 
+		<if test="category != '' ">
+			<where>
+				cp_category like '%' || #{category} || '%'
+			</where>
+		</if>
+		ORDER BY cp_regdate DESC 
+	</select>
+	
+</mapper>
