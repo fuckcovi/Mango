@@ -24,7 +24,7 @@
 							fn:endsWith(deviceInfo.di_imagename1, '.JPG') || 
 							fn:endsWith(deviceInfo.di_imagename1, '.PNG') || 
 							fn:endsWith(deviceInfo.di_imagename1, '.GIF')}">
-						<img src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${deviceInfo.d_seq}" style="width:200px;height:200px;">
+						<img src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${deviceInfo.d_seq}&di_seq=${deviceInfo.di_seq}" style="width:200px;height:200px;">
 					</c:if>
 					<span>(${deviceInfo.di_imagename1}이 등록되어있습니다. 재업로드하면 기존 파일은 삭제됩니다.)</span>
 				</c:if>
@@ -41,7 +41,7 @@
 							fn:endsWith(deviceInfo.di_imagename2, '.JPG') || 
 							fn:endsWith(deviceInfo.di_imagename2, '.PNG') || 
 							fn:endsWith(deviceInfo.di_imagename2, '.GIF')}">
-						<img src="${pageContext.request.contextPath}/device/imageView2.do?d_seq=${deviceInfo.d_seq}" style="width:200px;height:200px;">
+						<img src="${pageContext.request.contextPath}/device/imageView2.do?d_seq=${deviceInfo.d_seq}&di_seq=${deviceInfo.di_seq}" style="width:200px;height:200px;">
 					</c:if>
 					<span>(${deviceInfo.di_imagename2}이 등록되어있습니다. 재업로드하면 기존 파일은 삭제됩니다.)</span>
 				</c:if> 
@@ -58,7 +58,7 @@
 							fn:endsWith(deviceInfo.di_imagename3, '.JPG') || 
 							fn:endsWith(deviceInfo.di_imagename3, '.PNG') || 
 							fn:endsWith(deviceInfo.di_imagename3, '.GIF')}">
-						<img src="${pageContext.request.contextPath}/device/imageView3.do?d_seq=${deviceInfo.d_seq}" style="width:200px;height:200px;">
+						<img src="${pageContext.request.contextPath}/device/imageView3.do?d_seq=${deviceInfo.d_seq}&di_seq=${deviceInfo.di_seq}" style="width:200px;height:200px;">
 					</c:if>
 					<span>(${deviceInfo.di_imagename3}이 등록되어있습니다. 재업로드하면 기존 파일은 삭제됩니다.)</span>
 				</c:if>
@@ -75,7 +75,7 @@
 							fn:endsWith(deviceInfo.di_imagename4, '.JPG') || 
 							fn:endsWith(deviceInfo.di_imagename4, '.PNG') || 
 							fn:endsWith(deviceInfo.di_imagename4, '.GIF')}">
-						<img src="${pageContext.request.contextPath}/device/imageView4.do?d_seq=${deviceInfo.d_seq}" style="width:200px;height:200px;">
+						<img src="${pageContext.request.contextPath}/device/imageView4.do?d_seq=${deviceInfo.d_seq}&di_seq=${deviceInfo.di_seq}" style="width:200px;height:200px;">
 					</c:if>
 					<span>(${deviceInfo.di_imagename4}이 등록되어있습니다. 재업로드하면 기존 파일은 삭제됩니다.)</span>
 				</c:if>
@@ -92,7 +92,7 @@
 							fn:endsWith(deviceInfo.di_imagename5, '.JPG') || 
 							fn:endsWith(deviceInfo.di_imagename5, '.PNG') ||  
 							fn:endsWith(deviceInfo.di_imagename5, '.GIF')}">
-						<img src="${pageContext.request.contextPath}/device/imageView5.do?d_seq=${deviceInfo.d_seq}" style="width:200px;height:200px;">
+						<img src="${pageContext.request.contextPath}/device/imageView5.do?d_seq=${deviceInfo.d_seq}&di_seq=${deviceInfo.di_seq}" style="width:200px;height:200px;">
 					</c:if>
 					<span>(${deviceInfo.di_imagename5}이 등록되어있습니다. 재업로드하면 기존 파일은 삭제됩니다.)</span>
 				</c:if>  

@@ -23,14 +23,6 @@
 			<img src="${pageContext.servletContext.contextPath}/resources/images/mango.PNG" height="100%" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" style="cursor:pointer">
 		</div>
 		<div style="float:right;min-width:800px;height:100%;display:table;">
-			<!-- <ul>
-				<li><a href="#">상품서비스</a></li>
-				<li><a href="#">다이렉트샵</a></li>
-				<li><a href="#">멤버십</a></li>
-				<li><a href="#">이벤트</a></li>
-				<li><a href="#">고객센터</a></li>
-				<li><a href="#">myMango</a></li>
-			</ul> -->
 			<nav id="topMenu">
 				<ul> 
 					<li class="topMenuLi"> 
@@ -59,7 +51,7 @@
 						</ul>
 					</li>
 					<li class="topMenuLi">
-						<a class="menuLink" href="#">이벤트</a>
+						<a class="menuLink" href="${pageContext.request.contextPath}/event/eventList.do">이벤트</a>
 						<ul class="submenu">
 							<li><a href="#" class="submenuLink longLink">진행중인 이벤트</a></li>
 							<li><a href="#" class="submenuLink">지난 이벤트</a></li>

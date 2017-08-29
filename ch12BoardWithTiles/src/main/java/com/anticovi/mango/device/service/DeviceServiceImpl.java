@@ -1,6 +1,7 @@
 package com.anticovi.mango.device.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -27,12 +28,12 @@ public class DeviceServiceImpl implements DeviceService {
 		deviceMapper.insertDeviceInfo(deviceInfo);
 	}
 	@Override
-	public DeviceCommand deviceInfo(Integer d_seq , Integer di_seq) {
-		return deviceMapper.deviceInfo(d_seq,di_seq);
+	public DeviceCommand deviceInfo(Map<String, Integer> map) {
+		return deviceMapper.deviceInfo(map);
 	}
 	@Override
-	public DeviceInfoCommand selectDeviceInfo(Integer d_seq,Integer di_seq) {
-		return deviceMapper.selectDeviceInfo(d_seq,di_seq);
+	public DeviceInfoCommand selectDeviceInfo(Map<String, Integer> map) {
+		return deviceMapper.selectDeviceInfo(map);
 	}
 	@Override
 	public void updateDeviceInfo(DeviceInfoCommand deviceInfo) {
