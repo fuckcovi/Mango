@@ -26,7 +26,7 @@
 			<nav id="topMenu">
 				<ul> 
 					<li class="topMenuLi"> 
-						<a class="menuLink" href="${pageContext.request.contextPath}/plan/callingplan.do">상품서비스</a> 
+						<a class="menuLink" href="${pageContext.request.contextPath}/plan/callingPlan.do">상품서비스</a> 
 						<ul class="submenu">
 							<li><a href="#" class="submenuLink">휴대폰 요금제</a></li>
 							<li><a href="#" class="submenuLink">부가서비스</a></li>

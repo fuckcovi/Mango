@@ -26,7 +26,7 @@
 	   			<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
 	   			<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 	   			<beans:value>/WEB-INF/tiles-def/device.xml</beans:value>
-
+	   			<beans:value>/WEB-INF/tiles-def/callingPlan.xml</beans:value>
 	   			<beans:value>/WEB-INF/tiles-def/membership.xml</beans:value>
 	   			<beans:value>/WEB-INF/tiles-def/event.xml</beans:value>
 
