@@ -18,8 +18,16 @@ public class DeviceCommand {
 	@NotEmpty
 	private String d_explain;
 	private String di_color;
-	private byte[] di_image;
-	private String di_imagename;
+	private byte[] di_image1;
+	private String di_imagename1;
+	private byte[] di_image2;
+	private String di_imagename2;
+	private byte[] di_image3;
+	private String di_imagename3;
+	private byte[] di_image4;
+	private String di_imagename4;
+	private byte[] di_image5;
+	private String di_imagename5;
 	private int di_quantity;
 	private int di_price;
 	private int di_seq;
@@ -31,17 +39,66 @@ public class DeviceCommand {
 	public void setDi_color(String di_color) {
 		this.di_color = di_color;
 	}
-	public byte[] getDi_image() {
-		return di_image;
+	
+	public byte[] getDi_image1() {
+		return di_image1;
 	}
-	public void setDi_image(byte[] di_image) {
-		this.di_image = di_image;
+	public void setDi_image1(byte[] di_image1) {
+		this.di_image1 = di_image1;
 	}
-	public String getDi_imagename() {
-		return di_imagename;
+	public String getDi_imagename1() {
+		return di_imagename1;
 	}
-	public void setDi_imagename(String di_imagename) {
-		this.di_imagename = di_imagename;
+	public void setDi_imagename1(String di_imagename1) {
+		this.di_imagename1 = di_imagename1;
+	}
+	public byte[] getDi_image2() {
+		return di_image2;
+	}
+	public void setDi_image2(byte[] di_image2) {
+		this.di_image2 = di_image2;
+	}
+	public String getDi_imagename2() {
+		return di_imagename2;
+	}
+	public void setDi_imagename2(String di_imagename2) {
+		this.di_imagename2 = di_imagename2;
+	}
+	public byte[] getDi_image3() {
+		return di_image3;
+	}
+	public void setDi_image3(byte[] di_image3) {
+		this.di_image3 = di_image3;
+	}
+	public String getDi_imagename3() {
+		return di_imagename3;
+	}
+	public void setDi_imagename3(String di_imagename3) {
+		this.di_imagename3 = di_imagename3;
+	}
+	public byte[] getDi_image4() {
+		return di_image4;
+	}
+	public void setDi_image4(byte[] di_image4) {
+		this.di_image4 = di_image4;
+	}
+	public String getDi_imagename4() {
+		return di_imagename4;
+	}
+	public void setDi_imagename4(String di_imagename4) {
+		this.di_imagename4 = di_imagename4;
+	}
+	public byte[] getDi_image5() {
+		return di_image5;
+	}
+	public void setDi_image5(byte[] di_image5) {
+		this.di_image5 = di_image5;
+	}
+	public String getDi_imagename5() {
+		return di_imagename5;
+	}
+	public void setDi_imagename5(String di_imagename5) {
+		this.di_imagename5 = di_imagename5;
 	}
 	public int getDi_quantity() {
 		return di_quantity;
@@ -101,9 +158,11 @@ public class DeviceCommand {
 	public String toString() {
 		return "DeviceCommand [d_seq=" + d_seq + ", d_name=" + d_name + ", d_modelnum=" + d_modelnum + ", d_regdate="
 				+ d_regdate + ", d_type=" + d_type + ", d_explain=" + d_explain + ", di_color=" + di_color
-				+ ", di_imagename=" + di_imagename + ", di_quantity=" + di_quantity + ", di_price=" + di_price
-				+ ", di_seq=" + di_seq + "]";
+				+ ", di_imagename1=" + di_imagename1 + ", di_imagename2=" + di_imagename2 + ", di_imagename3="
+				+ di_imagename3 + ", di_imagename4=" + di_imagename4 + ", di_imagename5=" + di_imagename5
+				+ ", di_quantity=" + di_quantity + ", di_price=" + di_price + ", di_seq=" + di_seq + "]";
 	}
+	
 	
 	
 	

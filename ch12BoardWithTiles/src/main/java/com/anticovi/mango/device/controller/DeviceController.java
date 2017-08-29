@@ -23,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.anticovi.mango.device.domain.DeviceCommand;
 import com.anticovi.mango.device.domain.DeviceInfoCommand;
 import com.anticovi.mango.device.service.DeviceService;
-import com.sun.javafx.sg.prism.NGShape.Mode;
 
 @Controller
 public class DeviceController {
@@ -83,25 +82,101 @@ public class DeviceController {
 			return registerDeviceInfoForm(deviceInfoCommand.getD_seq());
 		}
 		deviceService.insertDeviceInfo(deviceInfoCommand);
+		List<DeviceCommand> deviceList = deviceService.allDeviceList();
+		return new ModelAndView("deviceMain","deviceList", deviceList);
+	}
+	@RequestMapping(value="/device/modifyDeviceInfo.do",method=RequestMethod.GET)
+	public ModelAndView modifyDeviceInfoForm(@RequestParam int di_seq,@RequestParam int d_seq){
+		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(d_seq,di_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("modifyDeviceInfoForm");
+		mav.addObject("deviceInfo", deviceInfo);
+		mav.addObject("di_seq", di_seq);
+		return mav;
+	}
+	@RequestMapping(value="/device/modifyDeviceInfo.do",method=RequestMethod.POST)
+	public ModelAndView modifyDeviceInfo(@RequestParam int di_seq,@RequestParam int d_seq,@ModelAttribute("deviceInfoCommand")@Valid DeviceInfoCommand deviceInfoCommand, BindingResult result){
+		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(d_seq,di_seq);
+		if(log.isDebugEnabled()){
+			log.debug("<<정보수정요청 - deviceInfoCommand>> : " + deviceInfoCommand);
+		}
+		if(result.hasFieldErrors("di_color") ){
+			deviceInfoCommand.setDi_imagename1(deviceInfo.getDi_imagename1());
+			deviceInfoCommand.setDi_imagename2(deviceInfo.getDi_imagename2());
+			deviceInfoCommand.setDi_imagename3(deviceInfo.getDi_imagename3());
+			deviceInfoCommand.setDi_imagename4(deviceInfo.getDi_imagename4());
+			deviceInfoCommand.setDi_imagename5(deviceInfo.getDi_imagename5());
+			return modifyDeviceInfoForm(deviceInfoCommand.getDi_seq(),deviceInfoCommand.getD_seq());
+		}
+		// 원래의 파일 호출
+		if(deviceInfoCommand.getDi_imagefile1().isEmpty()){
+			deviceInfoCommand.setDi_image1(deviceInfo.getDi_image1());
+			deviceInfoCommand.setDi_image2(deviceInfo.getDi_image2());
+			deviceInfoCommand.setDi_image3(deviceInfo.getDi_image3());
+			deviceInfoCommand.setDi_image4(deviceInfo.getDi_image4());
+			deviceInfoCommand.setDi_image5(deviceInfo.getDi_image5());
+			deviceInfoCommand.setDi_imagename1(deviceInfo.getDi_imagename1());
+			deviceInfoCommand.setDi_imagename2(deviceInfo.getDi_imagename2());
+			deviceInfoCommand.setDi_imagename3(deviceInfo.getDi_imagename3());
+			deviceInfoCommand.setDi_imagename4(deviceInfo.getDi_imagename4());
+			deviceInfoCommand.setDi_imagename5(deviceInfo.getDi_imagename5());
+		}
+			deviceService.updateDeviceInfo(deviceInfoCommand);
 		return deviceMain();
 	}
 	
 	@RequestMapping(value="/device/deviceInfo.do",method=RequestMethod.GET)
-	public ModelAndView deviceInfo(@RequestParam int d_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq);
+	public ModelAndView deviceInfo(@RequestParam int d_seq,@RequestParam int di_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("deviceInfo");
 		mav.addObject("device", device);
 		return mav;
 	}
 	
-	@RequestMapping("/device/imageView.do")
-	public ModelAndView viewImageTeamLogo(@RequestParam int d_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq);
+	@RequestMapping("/device/imageView1.do")
+	public ModelAndView viewImage1(@RequestParam int d_seq,@RequestParam int di_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
-		mav.addObject("imageFile",device.getDi_image());
-		mav.addObject("filename", device.getDi_imagename());
+		mav.addObject("imageFile",device.getDi_image1());
+		mav.addObject("filename", device.getDi_imagename1());
+		return mav;
+	}
+	@RequestMapping("/device/imageView2.do")
+	public ModelAndView viewImage2(@RequestParam int d_seq,@RequestParam int di_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image2());
+		mav.addObject("filename", device.getDi_imagename2());
+		return mav;
+	}
+	@RequestMapping("/device/imageView3.do")
+	public ModelAndView viewImage3(@RequestParam int d_seq,@RequestParam int di_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image3());
+		mav.addObject("filename", device.getDi_imagename3());
+		return mav;
+	}
+	@RequestMapping("/device/imageView4.do")
+	public ModelAndView viewImage4(@RequestParam int d_seq,@RequestParam int di_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image4());
+		mav.addObject("filename", device.getDi_imagename4());
+		return mav;
+	}
+	@RequestMapping("/device/imageView5.do")
+	public ModelAndView viewImageTeamLogo(@RequestParam int d_seq,@RequestParam int di_seq){
+		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",device.getDi_image5());
+		mav.addObject("filename", device.getDi_imagename5());
 		return mav;
 	}
 }
