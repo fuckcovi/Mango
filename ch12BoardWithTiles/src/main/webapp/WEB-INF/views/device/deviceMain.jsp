@@ -16,7 +16,7 @@
 					fn:endsWith(device.di_imagename1, '.JPG') || 
 					fn:endsWith(device.di_imagename1, '.PNG') || 
 					fn:endsWith(device.di_imagename1, '.GIF')}">
-			<img src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${device.d_seq}" style="width:200px;height:200px;">
+			<img src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:200px;height:200px;">
 		</c:if>
 		</li>
 		<li><b>${device.d_name}</b></li>
@@ -32,7 +32,7 @@
 				<input type="button" value="상세등록" onclick="location.href='${pageContext.request.contextPath}/device/registerDeviceInfo.do?d_seq=${device.d_seq}'">
 			</c:if> 
 			<c:if test="${device.di_seq != 0}">
-				<input type="button" value="상세수정" onclick="location.href='${pageContext.request.contextPath}/device/modifyDeviceInfo.do?d_seq=${device.d_seq}'">
+				<input type="button" value="상세수정" onclick="location.href='${pageContext.request.contextPath}/device/modifyDeviceInfo.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}'">
 			</c:if>
 		</c:if>
 		<c:if test="${user_status != 9 }">
@@ -40,7 +40,7 @@
 				상세정보없음.
 			</c:if> 
 			<c:if test="${device.di_seq != 0}">
-				<input type="button" value="자세히보기" onclick="location.href='${pageContext.request.contextPath}/device/deviceInfo.do?d_seq=${device.d_seq}'">
+				<input type="button" value="자세히보기" onclick="location.href='${pageContext.request.contextPath}/device/deviceInfo.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}'">
 			</c:if>
 		</c:if>
 		</li>

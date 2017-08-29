@@ -27,12 +27,16 @@ public class DeviceServiceImpl implements DeviceService {
 		deviceMapper.insertDeviceInfo(deviceInfo);
 	}
 	@Override
-	public DeviceCommand deviceInfo(Integer d_seq) {
-		return deviceMapper.deviceInfo(d_seq);
+	public DeviceCommand deviceInfo(Integer d_seq , Integer di_seq) {
+		return deviceMapper.deviceInfo(d_seq,di_seq);
 	}
 	@Override
-	public DeviceInfoCommand selectDeviceInfo(Integer d_seq) {
-		return deviceMapper.selectDeviceInfo(d_seq);
+	public DeviceInfoCommand selectDeviceInfo(Integer d_seq,Integer di_seq) {
+		return deviceMapper.selectDeviceInfo(d_seq,di_seq);
+	}
+	@Override
+	public void updateDeviceInfo(DeviceInfoCommand deviceInfo) {
+		deviceMapper.updateDeviceInfo(deviceInfo);
 	}
 	
 
