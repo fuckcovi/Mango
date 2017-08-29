@@ -45,10 +45,14 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	   	<property name="dataSource" ref="dataSource"/>
 	   	<!-- 커맨드객체(자바빈)을 등록 -->
-	   	<property name="typeAliasesPackage" value="com.anticovi.mango.member.domain, com.anticovi.mango.device.domain"/>
+	   	<property name="typeAliasesPackage" value="com.anticovi.mango.member.domain, 
+	   											   com.anticovi.mango.device.domain, 
+	   											   com.anticovi.mango.event.domain"/>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- DAO 등록 -->
-		<property name="basePackage" value="com.anticovi.mango.member.dao,com.anticovi.mango.device.dao"/>
+		<property name="basePackage" value="com.anticovi.mango.member.dao,
+											com.anticovi.mango.device.dao,
+											com.anticovi.mango.event.dao"/>
 	</bean>
 </beans>
