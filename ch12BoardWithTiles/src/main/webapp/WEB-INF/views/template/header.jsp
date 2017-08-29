@@ -52,7 +52,7 @@
 					<li class="topMenuLi">
 						<a class="menuLink" href="#">멤버십</a>
 						<ul class="submenu">
-							<li><a href="#" class="submenuLink">멤버십가입</a></li>
+							<li><a href="${pageContext.request.contextPath}/membership/join.do">멤버십가입</a></li>
 							<li><a href="#" class="submenuLink">멤버십혜택</a></li>
 							<li><a href="#" class="submenuLink">VIP</a></li>
 							<li><a href="#" class="submenuLink">제휴사</a></li>
