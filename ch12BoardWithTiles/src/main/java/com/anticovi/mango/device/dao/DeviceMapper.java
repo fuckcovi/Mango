@@ -11,10 +11,18 @@ import com.anticovi.mango.device.domain.DeviceCommand;
 import com.anticovi.mango.device.domain.DeviceInfoCommand;
 
 public interface DeviceMapper {
-	@Select("SELECT * FROM device a FULL OUTER JOIN deviceinfo b ON a.d_seq=b.d_seq")	// 사이트에 등록된 기기리스트
-	public List<DeviceCommand> allDeviceList();
+	// 사이트에 등록된 기기리스트
+	public List<DeviceCommand> allDeviceList(Map<String, Object> map);
+	
+	// 선택한 기기, 색상의 정보+기기 조인내용
 	@Select("SELECT * FROM (SELECT * FROM device WHERE d_seq=#{d_seq})a, deviceinfo b WHERE a.d_seq=b.d_seq AND di_seq=#{di_seq}") // 해당 기기 상세정보 확인
 	public DeviceCommand deviceInfo(Map<String, Integer> map);
+	
+	// 선택한 기기의 기기+정보리스트 불러오기
+	@Select("SELECT * FROM device a, deviceinfo b WHERE a.d_seq=#{d_seq} AND a.d_seq=b.d_seq")
+	public List<DeviceCommand> deviceInfoList(Integer d_seq);
+	
+	// 선택한 기기의 선택된 색상에 따른 정보만 보기.
 	@Select("SELECT * FROM deviceinfo WHERE d_seq=#{d_seq} AND di_seq=#{di_seq}")
 	public DeviceInfoCommand selectDeviceInfo(Map<String, Integer> map);
 	@Insert("INSERT INTO device(d_seq,d_name,d_modelnum,d_regdate,d_type,d_explain) VALUES(device_seq.nextval,#{d_name},#{d_modelnum},#{d_regdate, jdbcType=DATE},#{d_type},#{d_explain})")

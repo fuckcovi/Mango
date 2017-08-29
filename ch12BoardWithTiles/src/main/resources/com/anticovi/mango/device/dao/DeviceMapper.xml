@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.anticovi.mango.device.dao.DeviceMapper"> 
+	<select id="allDeviceList" parameterType="map" resultType="deviceCommand">
+	SELECT * FROM device a FULL OUTER JOIN deviceinfo b ON a.d_seq=b.d_seq
+		<if test="device != '' ">
+			<where>
+				a.d_type like '%' || #{device} || '%'
+			</where>
+		</if>
+		ORDER BY a.d_regdate DESC 
+	</select>
+	
+</mapper>

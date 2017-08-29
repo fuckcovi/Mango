@@ -110,4 +110,5 @@
 		</tr>
 	</table>
 	<input type="submit" value="정보수정">
+	<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath}/device/device.do'">
 </form:form>

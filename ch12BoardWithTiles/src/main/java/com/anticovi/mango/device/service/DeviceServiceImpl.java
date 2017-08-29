@@ -16,8 +16,8 @@ public class DeviceServiceImpl implements DeviceService {
 	@Resource
 	private DeviceMapper deviceMapper;
 	@Override
-	public List<DeviceCommand> allDeviceList() {
-		return deviceMapper.allDeviceList();
+	public List<DeviceCommand> allDeviceList(Map<String, Object> map) {
+		return deviceMapper.allDeviceList(map);
 	}
 	@Override
 	public void insertDevice(DeviceCommand device) {
@@ -38,6 +38,10 @@ public class DeviceServiceImpl implements DeviceService {
 	@Override
 	public void updateDeviceInfo(DeviceInfoCommand deviceInfo) {
 		deviceMapper.updateDeviceInfo(deviceInfo);
+	}
+	@Override
+	public List<DeviceCommand> deviceInfoList(Integer d_seq) {
+		return deviceMapper.deviceInfoList(d_seq);
 	}
 	
 
