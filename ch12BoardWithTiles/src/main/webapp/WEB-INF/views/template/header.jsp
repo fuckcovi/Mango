@@ -36,9 +36,11 @@
 					<li class="topMenuLi">
 						<a class="menuLink" href="${pageContext.request.contextPath}/device/device.do">다이렉트샵</a>
 						<ul class="submenu">
-							<li><a href="#" class="submenuLink">휴대폰</a></li>
-							<li><a href="#" class="submenuLink">태블릿</a></li>
-							<li><a href="#" class="submenuLink">악세사리</a></li>
+							<li><a href="${pageContext.request.contextPath}/device/phone.do" class="submenuLink">휴대폰</a></li>
+							<li><a href="${pageContext.request.contextPath}/device/tablet.do" class="submenuLink">태블릿</a></li>
+							<li><a href="${pageContext.request.contextPath}/device/smartwatch.do" class="submenuLink">스마트워치</a></li>
+							<li><a href="${pageContext.request.contextPath}/device/kids.do" class="submenuLink">키즈폰</a></li>
+							<li><a href="${pageContext.request.contextPath}/device/acc.do" class="submenuLink">악세사리</a></li>
 						</ul>
 					</li>
 					<li class="topMenuLi">

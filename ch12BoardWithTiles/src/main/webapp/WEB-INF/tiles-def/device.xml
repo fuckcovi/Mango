@@ -25,4 +25,28 @@
      	<put-attribute name="title" value="상품상세보기 | Mango"/>
      	<put-attribute name="body" value="/WEB-INF/views/device/deviceInfo.jsp"/>
     </definition>
+    
+    <definition name="devicePhoneMain" extends="main">
+     	<put-attribute name="title" value="핸드폰 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/devicePhoneMain.jsp"/>
+    </definition>
+    <definition name="deviceSwMain" extends="main">
+     	<put-attribute name="title" value="스마트워치 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/deviceSwMain.jsp"/>
+    </definition>
+    <definition name="deviceKidsMain" extends="main">
+     	<put-attribute name="title" value="키즈폰 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/deviceKidsMain.jsp"/>
+    </definition>
+    <definition name="deviceAccMain" extends="main">
+     	<put-attribute name="title" value="악세서리 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/deviceAccMain.jsp"/>
+    </definition>
+    <definition name="deviceTabletMain" extends="main">
+     	<put-attribute name="title" value="태블릿 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/device/deviceTabletMain.jsp"/>
+    </definition>
+    
+    
+    
 </tiles-definitions>

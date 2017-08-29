@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.anticovi.mango.device.domain.DeviceCommand;
 import com.anticovi.mango.device.domain.DeviceInfoCommand;
 import com.anticovi.mango.device.service.DeviceService;
+import com.anticovi.mango.member.domain.MemberCommand;
 
 @Controller
 public class DeviceController {
@@ -41,12 +42,68 @@ public class DeviceController {
 	}
 	@RequestMapping("/device/device.do")
 	public ModelAndView deviceMain(){
-		List<DeviceCommand> deviceList = deviceService.allDeviceList();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("device", "");
+		List<DeviceCommand> deviceList = deviceService.allDeviceList(map);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("deviceMain");
 		mav.addObject("deviceList", deviceList);
-		System.out.println(deviceList);
+		return mav;
+	}
+	@RequestMapping("/device/phone.do")
+	public ModelAndView devicePhoneMain(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("device", "핸드폰");
+		List<DeviceCommand> deviceList = deviceService.allDeviceList(map);
+				
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("devicePhoneMain");
+		mav.addObject("deviceList", deviceList);
+		return mav;
+	}
+	@RequestMapping("/device/tablet.do")
+	public ModelAndView deviceTabletMain(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("device", "태블릿");
+		List<DeviceCommand> deviceList = deviceService.allDeviceList(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("deviceTabletMain");
+		mav.addObject("deviceList", deviceList);
+		return mav;
+	}
+	@RequestMapping("/device/smartwatch.do")
+	public ModelAndView deviceSwMain(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("device", "스마트워치");
+		List<DeviceCommand> deviceList = deviceService.allDeviceList(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("deviceSwMain");
+		mav.addObject("deviceList", deviceList);
+		return mav;
+	}
+	@RequestMapping("/device/kids.do")
+	public ModelAndView deviceKidsMain(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("device", "키즈폰");
+		List<DeviceCommand> deviceList = deviceService.allDeviceList(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("deviceKidsMain");
+		mav.addObject("deviceList", deviceList);
+		return mav;
+	}
+	@RequestMapping("/device/acc.do")
+	public ModelAndView deviceAccMain(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("device", "악세서리");
+		List<DeviceCommand> deviceList = deviceService.allDeviceList(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("deviceAccMain");
+		mav.addObject("deviceList", deviceList);
 		return mav;
 	}
 	@RequestMapping(value="/device/registerDevice.do",method=RequestMethod.GET)
@@ -82,7 +139,9 @@ public class DeviceController {
 			return registerDeviceInfoForm(deviceInfoCommand.getD_seq());
 		}
 		deviceService.insertDeviceInfo(deviceInfoCommand);
-		List<DeviceCommand> deviceList = deviceService.allDeviceList();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("device", "");
+		List<DeviceCommand> deviceList = deviceService.allDeviceList(map);
 		return new ModelAndView("redirect:/device/device.do","deviceList", deviceList);
 	}
 	@RequestMapping(value="/device/modifyDeviceInfo.do",method=RequestMethod.GET)
@@ -137,11 +196,36 @@ public class DeviceController {
 		map.put("d_seq", d_seq);
 		map.put("di_seq", di_seq);
 		DeviceCommand device = deviceService.deviceInfo(map);
+
+		// 등록된 색상별로 정보보기 d_seq인 deviceInfo리스트 불러와서 di_color에 따라 보여주기
+		List<DeviceCommand> deviceInfoList = deviceService.deviceInfoList(d_seq);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("deviceInfo");
 		mav.addObject("device", device);
+		mav.addObject("deviceInfoList", deviceInfoList);
 		return mav;
 	}
+	@RequestMapping("/device/deviceColorSelect.do")
+	@ResponseBody
+	public Map<String, Object> deviceColorSelect(@RequestParam int d_seq,@RequestParam int di_seq){
+		if(log.isDebugEnabled()){
+			log.debug("<<색상 선택한 정보 seq>>> : " + di_seq);
+		}
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceInfoCommand device = deviceService.selectDeviceInfo(map);
+		Map<String, Object> rmap = new HashMap<String, Object>();
+		if(device != null){
+			rmap.put("result", "success");
+			rmap.put("device", device);
+		}else{
+			rmap.put("result", "NotFound");
+		}
+		return rmap;
+	}
+	
 	
 	@RequestMapping("/device/imageView1.do")
 	public ModelAndView viewImage1(@RequestParam int d_seq,@RequestParam int di_seq){

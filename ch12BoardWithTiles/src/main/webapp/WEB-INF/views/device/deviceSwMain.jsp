@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<h3><B>다이렉트샵</B></h3>
+<h3><B>다이렉트샵 - 스마트워치</B></h3>
 <c:if test="${user_status == 9 }">
 <input type="button" value="기기등록" onclick="location.href='${pageContext.request.contextPath}/device/registerDevice.do'">
 </c:if>

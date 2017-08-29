@@ -20,7 +20,14 @@
 	</tr>
 	<tr>
 		<th><form:label path="d_type">기기유형</form:label></th>
-		<td><form:input path="d_type"/></td>
+		<td>
+			<form:select path="d_type">
+				<form:option value="핸드폰">핸드폰</form:option>
+				<form:option value="태블릿">태블릿</form:option>
+				<form:option value="스마트워치">스마트워치</form:option>
+				<form:option value="키즈폰">키즈폰</form:option>
+			</form:select>
+		</td>
 		<td><form:errors path="d_type" cssClass="error-color"/></td>
 	</tr>
 	<tr>
