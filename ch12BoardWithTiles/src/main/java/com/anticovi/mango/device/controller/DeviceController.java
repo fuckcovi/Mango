@@ -83,11 +83,14 @@ public class DeviceController {
 		}
 		deviceService.insertDeviceInfo(deviceInfoCommand);
 		List<DeviceCommand> deviceList = deviceService.allDeviceList();
-		return new ModelAndView("deviceMain","deviceList", deviceList);
+		return new ModelAndView("redirect:/device/device.do","deviceList", deviceList);
 	}
 	@RequestMapping(value="/device/modifyDeviceInfo.do",method=RequestMethod.GET)
 	public ModelAndView modifyDeviceInfoForm(@RequestParam int di_seq,@RequestParam int d_seq){
-		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("modifyDeviceInfoForm");
 		mav.addObject("deviceInfo", deviceInfo);
@@ -96,7 +99,10 @@ public class DeviceController {
 	}
 	@RequestMapping(value="/device/modifyDeviceInfo.do",method=RequestMethod.POST)
 	public ModelAndView modifyDeviceInfo(@RequestParam int di_seq,@RequestParam int d_seq,@ModelAttribute("deviceInfoCommand")@Valid DeviceInfoCommand deviceInfoCommand, BindingResult result){
-		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(map);
 		if(log.isDebugEnabled()){
 			log.debug("<<정보수정요청 - deviceInfoCommand>> : " + deviceInfoCommand);
 		}
@@ -127,7 +133,10 @@ public class DeviceController {
 	
 	@RequestMapping(value="/device/deviceInfo.do",method=RequestMethod.GET)
 	public ModelAndView deviceInfo(@RequestParam int d_seq,@RequestParam int di_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceCommand device = deviceService.deviceInfo(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("deviceInfo");
 		mav.addObject("device", device);
@@ -136,7 +145,10 @@ public class DeviceController {
 	
 	@RequestMapping("/device/imageView1.do")
 	public ModelAndView viewImage1(@RequestParam int d_seq,@RequestParam int di_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceCommand device = deviceService.deviceInfo(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
 		mav.addObject("imageFile",device.getDi_image1());
@@ -145,7 +157,10 @@ public class DeviceController {
 	}
 	@RequestMapping("/device/imageView2.do")
 	public ModelAndView viewImage2(@RequestParam int d_seq,@RequestParam int di_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceCommand device = deviceService.deviceInfo(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
 		mav.addObject("imageFile",device.getDi_image2());
@@ -154,7 +169,10 @@ public class DeviceController {
 	}
 	@RequestMapping("/device/imageView3.do")
 	public ModelAndView viewImage3(@RequestParam int d_seq,@RequestParam int di_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceCommand device = deviceService.deviceInfo(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
 		mav.addObject("imageFile",device.getDi_image3());
@@ -163,7 +181,10 @@ public class DeviceController {
 	}
 	@RequestMapping("/device/imageView4.do")
 	public ModelAndView viewImage4(@RequestParam int d_seq,@RequestParam int di_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceCommand device = deviceService.deviceInfo(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
 		mav.addObject("imageFile",device.getDi_image4());
@@ -172,7 +193,10 @@ public class DeviceController {
 	}
 	@RequestMapping("/device/imageView5.do")
 	public ModelAndView viewImageTeamLogo(@RequestParam int d_seq,@RequestParam int di_seq){
-		DeviceCommand device = deviceService.deviceInfo(d_seq,di_seq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("d_seq", d_seq);
+		map.put("di_seq", di_seq);
+		DeviceCommand device = deviceService.deviceInfo(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
 		mav.addObject("imageFile",device.getDi_image5());
