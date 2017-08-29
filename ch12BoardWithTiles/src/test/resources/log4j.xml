@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="kr.spring.board">
+	<logger name="com.anticovi.mango">
 		<level value="info" />
 	</logger>
 	

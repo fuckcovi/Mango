@@ -26,6 +26,7 @@
 	   			<beans:value>/WEB-INF/tiles-def/main.xml</beans:value>
 	   			<beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 	   			<beans:value>/WEB-INF/tiles-def/device.xml</beans:value>
+	   			<beans:value>/WEB-INF/tiles-def/event.xml</beans:value>
 	   		</beans:list>
 	   	</beans:property>
 	</beans:bean>
@@ -87,6 +88,6 @@
 			<mapping path="/board/delete.do"/>
 			<beans:bean class="com.anticovi.mango.member.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
-	</interceptors>	 -->   
+	</interceptors>  -->
 	   
 </beans:beans>
