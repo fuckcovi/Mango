@@ -11,4 +11,7 @@ import com.anticovi.mango.callingPlan.domain.CallingPlanCommand;
 public interface CallingPlanService {
 	@Transactional(readOnly=true)
 	public List<CallingPlanCommand> allCpList(Map<String, Object> map);
+	@Transactional(readOnly=true)
+	public CallingPlanCommand selectCallingPlan(Integer cp_seq);
+	public void registerCallingPlan(CallingPlanCommand callingPlan);
 }

@@ -15,7 +15,7 @@ public class CallingPlanCommand {
 	@NotEmpty
 	private String cp_modelnum;
 	private Date cp_regdate;
-	@NotEmpty
+
 	private int cp_price;
 	@NotEmpty
 	private String cp_call;

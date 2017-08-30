@@ -47,4 +47,42 @@ public class CallingPlanController {
 		model.addAttribute("callingPlanList", callingPlanList);
 		return "callingPlanMain";
 	}
+	@RequestMapping(value="/plan/registerCpForm.do",method=RequestMethod.GET)
+	public String registerCpForm(){
+		return "registerCpForm";
+	}
+	@RequestMapping(value="/plan/registerCpForm.do",method=RequestMethod.POST)
+	public String registerCp(@ModelAttribute("callingPlanCommand")@Valid CallingPlanCommand callingPlanCommand,BindingResult result,Model model){
+		System.out.println("?????????????");
+		if(log.isDebugEnabled()){
+			log.debug("<<요금제 등록요청 - callingPlanCommand>> : " + callingPlanCommand);
+		}
+		if(result.hasFieldErrors("cp_name") || result.hasFieldErrors("cp_category") ||
+				result.hasFieldErrors("cp_modelnum") || result.hasFieldErrors("cp_data") ||
+				result.hasFieldErrors("cp_price") || result.hasFieldErrors("cp_message") ||
+				result.hasFieldErrors("cp_call")){
+			return registerCpForm();
+		}
+		callingPlanService.registerCallingPlan(callingPlanCommand);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("category", "");
+		List<CallingPlanCommand> callingPlanList = callingPlanService.allCpList(map);
+		model.addAttribute("callingPlanList", callingPlanList);
+		return "redirect:/plan/callingPlan.do";
+	}
+	@RequestMapping("/plan/cpDetail.do")
+	public String cpDetail(@RequestParam int cp_seq, Model model){
+		CallingPlanCommand callingPlan = callingPlanService.selectCallingPlan(cp_seq);
+		model.addAttribute("callingPlan", callingPlan);
+		return "cpDetail";
+	}
+	@RequestMapping("/plan/imageView.do")
+	public ModelAndView viewImage(@RequestParam int cp_seq){
+		CallingPlanCommand callingPlan = callingPlanService.selectCallingPlan(cp_seq);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",callingPlan.getCp_detailimage());
+		mav.addObject("filename", callingPlan.getCp_detailimagename());
+		return mav;
+	}
 }

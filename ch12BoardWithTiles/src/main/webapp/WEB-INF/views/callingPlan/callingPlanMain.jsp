@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <h3><B>요금제</B></h3>
+<c:if test="${user_status == 9 }">
+<input type="button" value="요금제등록" onclick="location.href='${pageContext.request.contextPath}/plan/registerCpForm.do'">
+</c:if>
 <table>
 <thead>
 	<tr>

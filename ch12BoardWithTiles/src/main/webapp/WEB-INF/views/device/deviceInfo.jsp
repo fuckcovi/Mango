@@ -2,27 +2,56 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<style type="text/css">
+	.view img{width:250px;height:375px;}
+</style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$(".image1").mouseover(function(){
-			$(".view").html("");
-			$(".view").html('<img class="image1" src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">');
+			$(".image1on").show();
+			$(".image2on").hide();
+			$(".image3on").hide();
+			$(".image4on").hide();
+			$(".image5on").hide();
+			/* $(".view").html("");
+			$(".view").html('<img class="image1" src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">'); */
 		});
 		$(".image2").mouseover(function(){
-			$(".view").html("");
-			$(".view").html('<img class="image2" src="${pageContext.request.contextPath}/device/imageView2.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">');
+			$(".image2on").show();
+			$(".image1on").hide();
+			$(".image3on").hide();
+			$(".image4on").hide();
+			$(".image5on").hide();
+			/* $(".view").html("");
+			$(".view").html('<img class="image2" src="${pageContext.request.contextPath}/device/imageView2.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">'); */
 		});
 		$(".image3").mouseover(function(){
-			$(".view").html("");
-			$(".view").html('<img class="image3" src="${pageContext.request.contextPath}/device/imageView3.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">');
+			$(".image1on").hide();
+			$(".image2on").hide();
+			$(".image3on").show();
+			$(".image4on").hide();
+			$(".image5on").hide();
+			/* $(".view").html("");
+			$(".view").html('<img class="image3" src="${pageContext.request.contextPath}/device/imageView3.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">'); */
 		});
 		$(".image4").mouseover(function(){
-			$(".view").html("");
-			$(".view").html('<img class="image4" src="${pageContext.request.contextPath}/device/imageView4.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">');
+			$(".image1on").hide();
+			$(".image2on").hide();
+			$(".image3on").hide();
+			$(".image4on").show();
+			$(".image5on").hide();
+			/* $(".view").html("");
+			$(".view").html('<img class="image4" src="${pageContext.request.contextPath}/device/imageView4.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">'); */
 		});
 		$(".image5").mouseover(function(){
-			$(".view").html("");
-			$(".view").html('<img class="image5" src="${pageContext.request.contextPath}/device/imageView5.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">');
+			$(".image1on").hide();
+			$(".image2on").hide();
+			$(".image3on").hide();
+			$(".image4on").hide();
+			$(".image5on").show();
+			/* $(".view").html("");
+			$(".view").html('<img class="image5" src="${pageContext.request.contextPath}/device/imageView5.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">'); */
 		});
 		
 		/* $(".detail span").click(function(){
@@ -58,7 +87,19 @@
 <div class="deviceImage" style="width:300px;height:465px;float:left;">
 	<div class="view" style="width:250px;heigh:380px;margin:0 auto;">
 		<c:if test="${!empty device.di_imagename1}">
-			<img class="image1" src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">
+			<img class="image1on" src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;">
+		</c:if>
+		<c:if test="${!empty device.di_imagename2}">
+			<img class="image2on" src="${pageContext.request.contextPath}/device/imageView2.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;display:none;">/
+		</c:if>
+		<c:if test="${!empty device.di_imagename1}">
+			<img class="image3on" src="${pageContext.request.contextPath}/device/imageView3.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;display:none;">
+		</c:if>
+		<c:if test="${!empty device.di_imagename1}">
+			<img class="image4on" src="${pageContext.request.contextPath}/device/imageView4.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;display:none;">
+		</c:if>
+		<c:if test="${!empty device.di_imagename1}">
+			<img class="image5on" src="${pageContext.request.contextPath}/device/imageView5.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:250px;height:375px;display:none;">
 		</c:if>
 		<c:if test="${empty device.di_imagename1 }">
 			사진없음

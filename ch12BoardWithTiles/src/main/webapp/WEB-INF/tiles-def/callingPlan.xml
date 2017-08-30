@@ -9,6 +9,13 @@
      	<put-attribute name="title" value="요금제| Mango"/>
      	<put-attribute name="body" value="/WEB-INF/views/callingPlan/callingPlanMain.jsp"/>
     </definition>
-    
+    <definition name="cpDetail" extends="main">
+     	<put-attribute name="title" value="요금제 상세보기| Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpDetail.jsp"/>
+    </definition>
+    <definition name="registerCpForm" extends="main">
+     	<put-attribute name="title" value="요금제 등록| Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/registerCpForm.jsp"/>
+    </definition>
     
 </tiles-definitions>

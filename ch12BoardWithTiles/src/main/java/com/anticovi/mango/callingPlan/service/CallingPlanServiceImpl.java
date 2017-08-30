@@ -20,4 +20,14 @@ public class CallingPlanServiceImpl implements CallingPlanService{
 		return callingPlanMapper.allCpList(map);
 	}
 
+	@Override
+	public CallingPlanCommand selectCallingPlan(Integer cp_seq) {
+		return callingPlanMapper.selectCallingPlan(cp_seq);
+	}
+
+	@Override
+	public void registerCallingPlan(CallingPlanCommand callingPlan) {
+		callingPlanMapper.registerCallingPlan(callingPlan);
+	}
+
 }
