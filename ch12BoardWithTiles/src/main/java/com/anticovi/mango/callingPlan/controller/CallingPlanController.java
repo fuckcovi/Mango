@@ -22,10 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.anticovi.mango.callingPlan.domain.CallingPlanCommand;
 import com.anticovi.mango.callingPlan.service.CallingPlanService;
-import com.anticovi.mango.device.domain.DeviceCommand;
-import com.anticovi.mango.device.domain.DeviceInfoCommand;
-import com.anticovi.mango.device.service.DeviceService;
-import com.anticovi.mango.member.domain.MemberCommand;
 
 @Controller
 public class CallingPlanController {
@@ -53,7 +49,6 @@ public class CallingPlanController {
 	}
 	@RequestMapping(value="/plan/registerCpForm.do",method=RequestMethod.POST)
 	public String registerCp(@ModelAttribute("callingPlanCommand")@Valid CallingPlanCommand callingPlanCommand,BindingResult result,Model model){
-		System.out.println("?????????????");
 		if(log.isDebugEnabled()){
 			log.debug("<<요금제 등록요청 - callingPlanCommand>> : " + callingPlanCommand);
 		}
