@@ -71,6 +71,12 @@ public class CallingPlanController {
 		model.addAttribute("callingPlan", callingPlan);
 		return "cpDetail";
 	}
+	@RequestMapping("/plan/serDetail.do")
+	public String serDetail(@RequestParam int cp_seq, Model model){
+		CallingPlanCommand callingPlan = callingPlanService.selectCallingPlan(cp_seq);
+		model.addAttribute("callingPlan", callingPlan);
+		return "serDetail";
+	}
 	@RequestMapping("/plan/imageView.do")
 	public ModelAndView viewImage(@RequestParam int cp_seq){
 		CallingPlanCommand callingPlan = callingPlanService.selectCallingPlan(cp_seq);
