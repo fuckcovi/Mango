@@ -28,9 +28,9 @@
 					<li class="topMenuLi"> 
 						<a class="menuLink" href="${pageContext.request.contextPath}/plan/callingPlan.do">상품서비스</a> 
 						<ul class="submenu">
-							<li><a href="#" class="submenuLink">휴대폰 요금제</a></li>
-							<li><a href="#" class="submenuLink">부가서비스</a></li>
-							<li><a href="#" class="submenuLink">맞춤상품</a></li>
+							<li><a href="${pageContext.request.contextPath}/plan/calling.do" class="submenuLink">휴대폰 요금제</a></li>
+							<li><a href="${pageContext.request.contextPath}/plan/service.do" class="submenuLink">부가서비스</a></li>
+							<li><a href="${pageContext.request.contextPath}/plan/custom.do" class="submenuLink">맞춤상품</a></li>
 						</ul>
 					</li>
 					<li class="topMenuLi">

@@ -5,29 +5,65 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <h3><B>요금제</B></h3>
 <table>
-<thead>
 	<tr>
 		<th>상품명</th>
-		<th>데이터</th>
-		<th>음성</th>
-		<th>문자</th>
-		<th>월정액</th>
-		<th>24개월약정시</th>
-	</tr>
-</thead>
-<tbody>
-	<tr>
 		<td>${callingPlan.cp_name }</td>
-		<td>${callingPlan.cp_data }</td>
-		<td>${callingPlan.cp_call }</td>
-		<td>${callingPlan.cp_message }</td>
-		<td>${callingPlan.cp_price }</td>
+	</tr>
+	<tr>
+		<th>데이터</th>
+		<c:if test="${callingPlan.cp_data ne '무제한' }">
+		<td><img alt="데이터" src="${pageContext.request.contextPath }/resources/images/bar70.PNG" height="30px;">
 		<td>
-		<fmt:formatNumber value="${callingPlan.cp_price*0.95 }" pattern="0"/>
+		<fmt:formatNumber value="${callingPlan.cp_data}" pattern="#,###" />GB
+		</c:if>
+		<c:if test="${callingPlan.cp_data eq '무제한' }">
+		<td><img alt="데이터" src="${pageContext.request.contextPath }/resources/images/bar100.PNG" height="30px;">
+		<td>
+		${callingPlan.cp_data}
+		</c:if>
 		</td>
 	</tr>
-</tbody>
-
+	<tr>
+		<th>전화</th>
+		<c:if test="${callingPlan.cp_call ne '무제한' }">
+		<td><img alt="전화" src="${pageContext.request.contextPath }/resources/images/bar70.PNG" height="30px;">
+		<td>
+		<fmt:formatNumber value="${callingPlan.cp_call}" pattern="#,###" />분
+		</c:if>
+		<c:if test="${callingPlan.cp_call eq '무제한' }">
+		<td><img alt="전화" src="${pageContext.request.contextPath }/resources/images/bar100.PNG" height="30px;">
+		<td>
+		${callingPlan.cp_call}
+		</c:if>
+		</td>
+	</tr>
+	<tr>
+		<th>문자</th>
+		<c:if test="${callingPlan.cp_message ne '무제한' }">
+		<td><img alt="문자" src="${pageContext.request.contextPath }/resources/images/bar70.PNG" height="30px;">
+		<td>
+		<fmt:formatNumber value="${callingPlan.cp_message}" pattern="#,###" />건
+		</c:if>
+		<c:if test="${callingPlan.cp_message eq '무제한' }">
+		<td><img alt="문자" src="${pageContext.request.contextPath }/resources/images/bar100.PNG" height="30px;">
+		<td>
+		${callingPlan.cp_message}
+		</c:if>
+		</td>
+	</tr>
+	<tr>
+		<th>월정액</th>
+		<td>
+		<fmt:formatNumber value="${callingPlan.cp_price}" pattern="#,###" />원
+		</td>
+	</tr>
+	<tr>
+		<th>24개월약정시</th>
+		<td>
+		<fmt:formatNumber value="${callingPlan.cp_price*0.95 }" pattern="#,###" />원
+		</td>
+	</tr>
+	
 </table>
 <div>
 	<c:if test="${fn:endsWith(callingPlan.cp_detailimagename, '.jpg') || 

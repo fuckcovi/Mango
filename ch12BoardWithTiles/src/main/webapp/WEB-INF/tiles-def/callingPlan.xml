@@ -9,13 +9,33 @@
      	<put-attribute name="title" value="요금제| Mango"/>
      	<put-attribute name="body" value="/WEB-INF/views/callingPlan/callingPlanMain.jsp"/>
     </definition>
-    <definition name="cpDetail" extends="main">
-     	<put-attribute name="title" value="요금제 상세보기| Mango"/>
-     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpDetail.jsp"/>
-    </definition>
-    <definition name="registerCpForm" extends="main">
+     <definition name="registerCpForm" extends="main">
      	<put-attribute name="title" value="요금제 등록| Mango"/>
      	<put-attribute name="body" value="/WEB-INF/views/callingPlan/registerCpForm.jsp"/>
     </definition>
     
+    <definition name="cpDetail" extends="main">
+     	<put-attribute name="title" value="요금제 상세보기| Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpDetail.jsp"/>
+    </definition>
+     <definition name="serDetail" extends="main">
+     	<put-attribute name="title" value="부가서비스 상세보기| Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/serDetail.jsp"/>
+    </definition>
+   
+    
+    <definition name="cpCallingMain" extends="main">
+     	<put-attribute name="title" value="핸드폰요금제| Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpCallingMain.jsp"/>
+    </definition>
+    
+    <definition name="cpServiceMain" extends="main">
+     	<put-attribute name="title" value="부가서비스| Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpServiceMain.jsp"/>
+    </definition>
+    
+    <definition name="cpCustomnMain" extends="main">
+     	<put-attribute name="title" value="맞춤상품| Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpCustomnMain.jsp"/>
+    </definition>
 </tiles-definitions>
