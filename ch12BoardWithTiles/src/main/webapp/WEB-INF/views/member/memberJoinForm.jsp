@@ -76,10 +76,18 @@ table th {
 					$("#loading").hide();
 					alert("아이디 중복체크 실패 - 네트워크 오류 발생");
 				}
-			});
+			});		
+		});	
 		
-		})
-	})
+		
+		
+		$("#join_form").submit(function() {
+			if(checkTnameDuplicated == 0) {
+				alert("아이디를 확인해 주세요.");
+				return false;
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -91,7 +99,7 @@ table th {
 			<h2 style="font-weight:bold;color:#333">가입 정보 입력</h2>
 			<span style="color:#777">로그인 및 가입 정보를 입력해 주세요.</span>
 			<br>
-			<form:form commandName="memberCommand" style="padding-top:30px;width:90%;height:700px;border:1px solid #BDBDBD">
+			<form:form commandName="memberCommand" id="join_form" style="padding-top:30px;width:90%;height:700px;border:1px solid #BDBDBD">
 				<table>
 					<tr>
 						<th>
@@ -212,7 +220,7 @@ table th {
 					</tr>
 				</table>
 				<br>
-				<input type="submit" value="회원가입" style="width:200px;height:60px;background:#FFC000;border:0;font-size:16px;cursor:pointer">
+				<input type="submit" value="회원가입" id="join-btn" style="width:200px;height:60px;background:#FFC000;border:0;font-size:16px;cursor:pointer">
 			</form:form>
 		</div>
 	</div>
