@@ -1,6 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>회원가입 | Mango</title>
+<style>
+* { margin: 0 auto; }
+body {
+	margin: 0 auto;
+	width: 100%;
+	min-height: 1000px;
+	height: 1000px;
+	text-align: center;
+	background: #EAEAEA;
+	font-family: "나눔고딕";
+}
+table {
+	font-size: 14px;
+}
+table th {
+	width: 100px;
+}
+.input-box {
+	padding: 5px;
+	width: 205px;
+	height: 25px;
+	border: 1px solid #BDBDBD;
+}
+.phone-box {
+	width: 60px;
+	height: 25px;
+	border: 1px solid #BDBDBD;
+}
+.error-color {
+	font-size: 12px;
+	color: red;
+}
+</style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -24,10 +62,10 @@
 				success:function(data){
 					$("#loading").hide();
 					if(data.result=="idNotFound"){
-						$("#confirmId").css("color","black").text("사용가능한 아이디");
+						$("#confirmId").css("color","blue").text("사용가능");
 						checkTnameDuplicated=1;
 					}else if(data.result=="idDuplicated"){
-						$("#confirmId").css("color","red").text("이미 등록된 아이디");
+						$("#confirmId").css("color","red").text("사용중");
 						checkTnameDuplicated=0;
 					}else{
 						alert("아이디 중복체크 오류 발생");
@@ -43,122 +81,140 @@
 		})
 	})
 </script>
-<form:form commandName="memberCommand" >
-<table>
-<tr>
-	<th>
-		<form:label path="m_id">아이디</form:label>
-	</th>
-	<td>
-		<form:input path="m_id"/>
-		<span id="confirmId"></span>
-		<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" width="16" height="16" style="display:none">
-	</td>
-	<td><form:errors path="m_id" cssClass="error-color"/></td>
-</tr>
-<tr>
-	<th>
-		<form:label path="m_pw">비밀번호</form:label>
-	</th>
-	<td>
-		<form:password path="m_pw"/>
-	</td>
-	<td><form:errors path="m_pw" cssClass="error-color"/></td>
-</tr>
-<tr>
-	<th>
-		<form:label path="m_name">이름</form:label>
-	</th>
-	<td>
-		<form:input path="m_name"/>
-	</td>
-	<td><form:errors path="m_name" cssClass="error-color"/></td>
-</tr>
-<tr>
-	<th>
-		<form:label path="m_phone1">전화번호</form:label>
-	</th>
-	<td>
-		<table>
-		<tr>
-			<td>
-				<form:select path="m_phone1">
-					<form:option value="010"/>
-					<form:option value="011"/>
-					<form:option value="017"/>
-					<form:option value="018"/>
-					<form:option value="019"/>
-				</form:select>
-			</td>
-			<th>	
-				<form:label path="m_phone2">-</form:label>
-			</th>
-				<td>
-					<form:input path="m_phone2"/>
-				</td>
-			<th>
-				<form:label path="m_phone3">-</form:label>
-			</th>
-			<td>
-				<form:input path="m_phone3"/>
-			</td>
-		</tr>
-		</table>
-	</td>
-	<td><form:errors path="m_phone2" cssClass="error-color"/>
-		<form:errors path="m_phone3" cssClass="error-color"/></td>
-</tr>
-<tr>
-	<th>	
-		<form:label path="m_birth">생년월일</form:label>
-	</th>
-	<td>
-		<input type="date" id="m_birth" name="m_birth">
-	</td>
-	<td><form:errors path="m_birth" cssClass="error-color"/></td>
-</tr>
-<tr>
-	<th>	
-		<form:label path="m_address1">주소</form:label>
-	</th>
-	<td>
-		<form:input path="m_address1"/>
-	</td>
-	<td><form:errors path="m_address1" cssClass="error-color"/></td>
-</tr>
-<tr>
-	<th>	
-		<form:label path="m_address2">상세주소</form:label>
-	</th>
-	<td>
-		<form:input path="m_address2"/>
-	</td>
-</tr>
-<tr>
-	<th>	
-		<form:label path="m_mydevice1">마이기기1</form:label>
-	</th>
-	<td>
-		<form:input path="m_mydevice1"/>
-	</td>
-</tr>
-<tr>
-	<th>
-		<form:label path="m_mydevice2">마이기기2</form:label>
-	</th>
-	<td>
-		<form:input path="m_mydevice2"/>
-	</td>
-</tr>
-<tr>
-	<th>
-		<form:label path="m_mydevice3">마이기기3</form:label>
-	</th>
-	<td>
-		<form:input path="m_mydevice3"/>
-	</td>
-</tr>
-
-</table>
-	<input type="submit" value="회원등록">
-</form:form>
+</head>
+<body>
+	<div style="width:650px;height:100%;background:#FFF">
+		<div><img src="${pageContext.request.contextPath}/resources/images/mango.PNG" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" style="cursor:pointer"></div>
+		<hr size="1" color="#EAEAEA">
+		<div style="padding:10px;text-align:left;font-size:12px"><span style="color:#777">약관 동의 > </span><strong>정보 입력</strong><span style="color:#777"> > 가입 완료</span></div>
+		<div style="line-height:300%">
+			<h2 style="font-weight:bold;color:#333">가입 정보 입력</h2>
+			<span style="color:#777">로그인 및 가입 정보를 입력해 주세요.</span>
+			<br>
+			<form:form commandName="memberCommand" style="padding-top:30px;width:90%;height:700px;border:1px solid #BDBDBD">
+				<table>
+					<tr>
+						<th>
+							<form:label path="m_id">아이디</form:label>
+						</th>
+						<td>
+							<form:input path="m_id" cssClass="input-box"/>
+						</td>
+						<td width="70">
+							<span id="confirmId" style="font-size:12px"></span>
+							<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" width="16" height="16" style="display:none">
+							<form:errors path="m_id" cssClass="error-color"/>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<form:label path="m_pw">비밀번호</form:label>
+						</th>
+						<td>
+							<form:password path="m_pw" cssClass="input-box"/>
+						</td>
+						<td><form:errors path="m_pw" cssClass="error-color"/></td>
+					</tr>
+					<tr>
+						<th>
+							<form:label path="m_name">이름</form:label>
+						</th>
+						<td>
+							<form:input path="m_name" cssClass="input-box"/>
+						</td>
+						<td><form:errors path="m_name" cssClass="error-color"/></td>
+					</tr>
+					<tr>
+						<th>
+							<form:label path="m_phone1">전화번호</form:label>
+						</th>
+						<td>
+							<table>
+							<tr>
+								<td>
+									<form:select path="m_phone1" cssClass="phone-box">
+										<form:option value="010"/>
+										<form:option value="011"/>
+										<form:option value="017"/>
+										<form:option value="018"/>
+										<form:option value="019"/>
+									</form:select>
+								</td>
+								<td>	
+									<form:label path="m_phone2">-</form:label>
+								</td>
+									<td>
+										<form:input path="m_phone2" cssClass="phone-box"/>
+									</td>
+								<td>
+									<form:label path="m_phone3">-</form:label>
+								</td>
+								<td>
+									<form:input path="m_phone3" cssClass="phone-box"/>
+								</td>
+							</tr>
+							</table>
+						</td>
+						<td>
+							<form:errors path="m_phone2" cssClass="error-color"/>
+							<%-- <form:errors path="m_phone3" cssClass="error-color"/> --%>
+						</td>
+					</tr>
+					<tr>
+						<th>	
+							<form:label path="m_birth">생년월일</form:label>
+						</th>
+						<td>
+							<input type="date" id="m_birth" name="m_birth" class="input-box">
+						</td>
+						<td><form:errors path="m_birth" cssClass="error-color"/></td>
+					</tr>
+					<tr>
+						<th>	
+							<form:label path="m_address1">주소</form:label>
+						</th>
+						<td>
+							<form:input path="m_address1" cssClass="input-box"/>
+						</td>
+						<td><form:errors path="m_address1" cssClass="error-color"/></td>
+					</tr>
+					<tr>
+						<th>	
+							<form:label path="m_address2">상세주소</form:label>
+						</th>
+						<td>
+							<form:input path="m_address2" cssClass="input-box"/>
+						</td>
+					</tr>
+					<tr>
+						<th>	
+							<form:label path="m_mydevice1">마이기기1</form:label>
+						</th>
+						<td>
+							<form:input path="m_mydevice1" cssClass="input-box"/>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<form:label path="m_mydevice2">마이기기2</form:label>
+						</th>
+						<td>
+							<form:input path="m_mydevice2" cssClass="input-box"/>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<form:label path="m_mydevice3">마이기기3</form:label>
+						</th>
+						<td>
+							<form:input path="m_mydevice3" cssClass="input-box"/>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<input type="submit" value="회원가입" style="width:200px;height:60px;background:#FFC000;border:0;font-size:16px;cursor:pointer">
+			</form:form>
+		</div>
+	</div>
+</body>
+</html>

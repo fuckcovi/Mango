@@ -6,15 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css"> --%>
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.PNG" type="image/x-icon" />
-<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.PNG" type="image/x-icon" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainLayout.css">
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/menuLayout.css">
-
+<tiles:insertAttribute name="setting"/>
 </head>
 <body>
 <div id="main">
@@ -33,11 +25,3 @@
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
