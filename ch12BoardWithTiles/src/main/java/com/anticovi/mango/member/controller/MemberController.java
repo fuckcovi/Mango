@@ -31,9 +31,16 @@ public class MemberController {
 		return new MemberCommand();
 	}
 	
+	// 약관동의
+	@RequestMapping(value="/member/terms.do", method=RequestMethod.GET)
+	public String memberTermsForm() {
+		return "/member/memberTermsForm";
+	}
+	
+	// 회원가입
 	@RequestMapping(value="/member/join.do",method=RequestMethod.GET)
 	public String memberJoinForm(){
-		return "memberJoinForm";
+		return "/member/memberJoinForm";
 	}
 	@RequestMapping(value="/member/join.do",method=RequestMethod.POST)
 	public String memberJoin(@ModelAttribute("memberCommand")@Valid MemberCommand memberCommand, BindingResult result){
@@ -50,6 +57,8 @@ public class MemberController {
 		memberService.insertMember(memberCommand);
 		return "memberJoin";
 	}
+	
+	// 로그인
 	@RequestMapping(value="/member/login.do",method=RequestMethod.GET)
 	public String memberLoginForm(){
 		return "memberLoginForm";
@@ -93,6 +102,7 @@ public class MemberController {
 		}
 	}
 	
+	// 아이디 중복체크
 	@RequestMapping(value="/member/confirmId.do")
 	@ResponseBody
 	public Map<String, String> confirmId(@RequestParam("m_id")String m_id){
@@ -109,6 +119,8 @@ public class MemberController {
 		}
 		return map;
 	}
+	
+	// 로그아웃
 	@RequestMapping("/member/logout.do")
 	public String logout(HttpSession session){
 		session.invalidate();
