@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,7 @@ public class MemberController {
 		return "/member/memberJoinForm";
 	}
 	@RequestMapping(value="/member/join.do",method=RequestMethod.POST)
-	public String memberJoin(@ModelAttribute("memberCommand")@Valid MemberCommand memberCommand, BindingResult result){
+	public String memberJoin(@ModelAttribute("memberCommand")@Valid MemberCommand memberCommand, Model model, BindingResult result){
 		if(log.isDebugEnabled()){
 			log.debug("<<회원가입 요청한  - memberCommand>> : " + memberCommand);
 		}
@@ -55,7 +56,9 @@ public class MemberController {
 		}
 		
 		memberService.insertMember(memberCommand);
-		return "memberJoin";
+		
+		model.addAttribute("member", memberCommand);
+		return "/member/memberJoin";
 	}
 	
 	// 로그인

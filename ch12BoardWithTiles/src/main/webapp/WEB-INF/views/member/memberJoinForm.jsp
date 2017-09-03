@@ -77,9 +77,7 @@ table th {
 					alert("아이디 중복체크 실패 - 네트워크 오류 발생");
 				}
 			});		
-		});	
-		
-		
+		});
 		
 		$("#join_form").submit(function() {
 			if(checkTnameDuplicated == 0) {
@@ -103,10 +101,10 @@ table th {
 				<table>
 					<tr>
 						<th>
-							<form:label path="m_id">아이디</form:label>
+							<form:label path="m_id"><span style="color:red">*</span>아이디</form:label>
 						</th>
 						<td>
-							<form:input path="m_id" cssClass="input-box"/>
+							<input type="text" id="m_id" name="m_id" class="input-box" placeholder="아이디 (영문, 숫자 3~20자)" style="ime-mode:disabled">
 						</td>
 						<td width="70">
 							<span id="confirmId" style="font-size:12px"></span>
@@ -116,25 +114,25 @@ table th {
 					</tr>
 					<tr>
 						<th>
-							<form:label path="m_pw">비밀번호</form:label>
+							<form:label path="m_pw"><span style="color:red">*</span>비밀번호</form:label>
 						</th>
 						<td>
-							<form:password path="m_pw" cssClass="input-box"/>
+							<input type="password" id="m_pw" name="m_pw" class="input-box" placeholder="비밀번호 (영문, 숫자 6~20자)">
 						</td>
 						<td><form:errors path="m_pw" cssClass="error-color"/></td>
 					</tr>
 					<tr>
 						<th>
-							<form:label path="m_name">이름</form:label>
+							<form:label path="m_name"><span style="color:red">*</span>이름</form:label>
 						</th>
 						<td>
-							<form:input path="m_name" cssClass="input-box"/>
+							<input type="text" name="m_name" class="input-box" placeholder="이름">
 						</td>
 						<td><form:errors path="m_name" cssClass="error-color"/></td>
 					</tr>
 					<tr>
 						<th>
-							<form:label path="m_phone1">전화번호</form:label>
+							<form:label path="m_phone1"><span style="color:red">*</span>전화번호</form:label>
 						</th>
 						<td>
 							<table>
@@ -152,25 +150,25 @@ table th {
 									<form:label path="m_phone2">-</form:label>
 								</td>
 									<td>
-										<form:input path="m_phone2" cssClass="phone-box"/>
+										<input type="text" id="m_phone2" name="m_phone2" class="phone-box" maxlength="4" onkeyup="if(this.value.length == 4) this.form.m_phone3.focus();" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="ime-mode:disabled">
 									</td>
 								<td>
 									<form:label path="m_phone3">-</form:label>
 								</td>
 								<td>
-									<form:input path="m_phone3" cssClass="phone-box"/>
+									<input type="text" id="m_phone3" name="m_phone3" class="phone-box" maxlength="4" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="ime-mode:disabled">
 								</td>
 							</tr>
 							</table>
 						</td>
 						<td>
 							<form:errors path="m_phone2" cssClass="error-color"/>
-							<%-- <form:errors path="m_phone3" cssClass="error-color"/> --%>
+							<form:errors path="m_phone3" cssClass="error-color"/>
 						</td>
 					</tr>
 					<tr>
 						<th>	
-							<form:label path="m_birth">생년월일</form:label>
+							<form:label path="m_birth"><span style="color:red">*</span>생년월일</form:label>
 						</th>
 						<td>
 							<input type="date" id="m_birth" name="m_birth" class="input-box">
@@ -179,7 +177,7 @@ table th {
 					</tr>
 					<tr>
 						<th>	
-							<form:label path="m_address1">주소</form:label>
+							<form:label path="m_address1"><span style="color:red">*</span>주소</form:label>
 						</th>
 						<td>
 							<form:input path="m_address1" cssClass="input-box"/>
