@@ -86,4 +86,30 @@ public class CallingPlanController {
 		mav.addObject("filename", callingPlan.getCp_detailimagename());
 		return mav;
 	}
+	@RequestMapping("/plan/calling.do")
+	public String cpCallingMain(Model model){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("category","모바일");
+		List<CallingPlanCommand> callingPlanList = callingPlanService.allCpList(map);
+		model.addAttribute("callingPlanList", callingPlanList);
+		return "cpCallingMain";
+	}
+	@RequestMapping("/plan/service.do")
+	public String cpServiceMain(Model model){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("category","부가서비스");
+		List<CallingPlanCommand> callingPlanList = callingPlanService.allCpList(map);
+		model.addAttribute("callingPlanList", callingPlanList);
+		return "cpServiceMain";
+	}
+	@RequestMapping("/plan/custom.do")
+	public String cpCustomnMain(Model model){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("category","");
+		List<CallingPlanCommand> callingPlanList = callingPlanService.allCpList(map);
+		model.addAttribute("callingPlanList", callingPlanList);
+		return "cpCustomnMain";
+	}
+		
+			
 }
