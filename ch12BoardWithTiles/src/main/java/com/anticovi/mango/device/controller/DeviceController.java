@@ -150,14 +150,19 @@ public class DeviceController {
 		map.put("d_seq", d_seq);
 		map.put("di_seq", di_seq);
 		DeviceInfoCommand deviceInfo = deviceService.selectDeviceInfo(map);
+		// 선택한 기기의 seq로 등록된 상세리스트목록 가져오기
+		List<DeviceCommand> deviceList = deviceService.deviceInfoList(d_seq);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("modifyDeviceInfoForm");
 		mav.addObject("deviceInfo", deviceInfo);
 		mav.addObject("di_seq", di_seq);
+		mav.addObject("d_seq", d_seq);
+		mav.addObject("deviceList", deviceList);
 		return mav;
 	}
 	@RequestMapping(value="/device/modifyDeviceInfo.do",method=RequestMethod.POST)
 	public ModelAndView modifyDeviceInfo(@RequestParam int di_seq,@RequestParam int d_seq,@ModelAttribute("deviceInfoCommand")@Valid DeviceInfoCommand deviceInfoCommand, BindingResult result){
+		System.out.println("?????????????????????");
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("d_seq", d_seq);
 		map.put("di_seq", di_seq);
@@ -176,17 +181,22 @@ public class DeviceController {
 		// 원래의 파일 호출
 		if(deviceInfoCommand.getDi_imagefile1().isEmpty()){
 			deviceInfoCommand.setDi_image1(deviceInfo.getDi_image1());
-			deviceInfoCommand.setDi_image2(deviceInfo.getDi_image2());
-			deviceInfoCommand.setDi_image3(deviceInfo.getDi_image3());
-			deviceInfoCommand.setDi_image4(deviceInfo.getDi_image4());
-			deviceInfoCommand.setDi_image5(deviceInfo.getDi_image5());
 			deviceInfoCommand.setDi_imagename1(deviceInfo.getDi_imagename1());
+		}else if(deviceInfoCommand.getDi_imagefile2().isEmpty()){
+			deviceInfoCommand.setDi_image2(deviceInfo.getDi_image2());
 			deviceInfoCommand.setDi_imagename2(deviceInfo.getDi_imagename2());
+		}else if(deviceInfoCommand.getDi_imagefile3().isEmpty()){
+			deviceInfoCommand.setDi_image3(deviceInfo.getDi_image3());
 			deviceInfoCommand.setDi_imagename3(deviceInfo.getDi_imagename3());
+		}else if(deviceInfoCommand.getDi_imagefile4().isEmpty()){
+			deviceInfoCommand.setDi_image4(deviceInfo.getDi_image4());
 			deviceInfoCommand.setDi_imagename4(deviceInfo.getDi_imagename4());
+		}else if(deviceInfoCommand.getDi_imagefile5().isEmpty()){
+			deviceInfoCommand.setDi_image5(deviceInfo.getDi_image5());
 			deviceInfoCommand.setDi_imagename5(deviceInfo.getDi_imagename5());
 		}
-			deviceService.updateDeviceInfo(deviceInfoCommand);
+		
+		deviceService.updateDeviceInfo(deviceInfoCommand);
 		return deviceMain();
 	}
 	

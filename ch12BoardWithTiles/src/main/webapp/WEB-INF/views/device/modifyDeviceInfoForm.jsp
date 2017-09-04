@@ -3,6 +3,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<div>
+	<c:forEach var="deviceList" items="${deviceList}">
+		<input type="button" value="${deviceList.di_color }" onclick="location.href='${pageContext.request.contextPath}/device/modifyDeviceInfo.do?d_seq=${deviceList.d_seq}&di_seq=${deviceList.di_seq}'">
+	</c:forEach>
+</div>
 <form:form commandName="deviceInfoCommand"  enctype="multipart/form-data">
 	<input type="hidden" id="d_seq" name="d_seq" value="${d_seq}">
 	<input type="hidden" id="di_seq" name="di_seq" value="${di_seq}">

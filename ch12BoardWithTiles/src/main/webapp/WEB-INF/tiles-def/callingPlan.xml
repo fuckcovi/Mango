@@ -36,6 +36,6 @@
     
     <definition name="cpCustomnMain" extends="main">
      	<put-attribute name="title" value="맞춤상품| Mango"/>
-     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpCustomnMain.jsp"/>
+     	<put-attribute name="body" value="/WEB-INF/views/callingPlan/cpCustomMain.jsp"/>
     </definition>
 </tiles-definitions>
