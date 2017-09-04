@@ -13,6 +13,10 @@
      	<put-attribute name="title" value="회원가입 | Mango"/>
      	<put-attribute name="body" value="/WEB-INF/views/member/memberJoin.jsp"/>
     </definition> -->
+     <definition name="memberJoin" extends="main">
+     	<put-attribute name="title" value="회원가입 | Mango"/>
+     	<put-attribute name="body" value="/WEB-INF/views/member/memberJoin.jsp"/>
+    </definition>
   	<definition name="memberLoginForm" extends="main">
      	<put-attribute name="title" value="로그인 | Mango"/>
      	<put-attribute name="body" value="/WEB-INF/views/member/memberLoginForm.jsp"/>

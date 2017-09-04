@@ -2,16 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<style type="text/css">
+	.back{min-width:980px;}
+	.deviceList{border: 1px solid; margin:10px 10px; min-width:300px;width:30%;height:350px;display:inline-block;float:left;}
+	.deviceList ul{list-style: none;}
+</style>
 <h3><B>다이렉트샵 - 핸드폰</B></h3>
+<div class="back">
 <c:if test="${user_status == 9 }">
-<input type="button" value="기기등록" onclick="location.href='${pageContext.request.contextPath}/device/registerDevice.do'">
+<div>
+	<input type="button" value="기기등록" onclick="location.href='${pageContext.request.contextPath}/device/registerDevice.do'">
+</div>
 </c:if>
 <c:set var="seq" value="0"/>
 <c:forEach var="device" items="${deviceList}">
 <c:set var="d_seq" value="[${device.d_seq}]"/>
 <c:if test="${!fn:contains(seq,d_seq)}">
 	<c:set var="seq" value="${seq},[${device.d_seq}]"/>
-	<div style="border: 1px solid; margin:10px 10px;">
+	<div class="deviceList">
 	<ul>
 		<li>
 		<c:if test="${fn:endsWith(device.di_imagename1, '.jpg') || 
@@ -21,6 +29,9 @@
 					fn:endsWith(device.di_imagename1, '.PNG') || 
 					fn:endsWith(device.di_imagename1, '.GIF')}">
 			<img src="${pageContext.request.contextPath}/device/imageView1.do?d_seq=${device.d_seq}&di_seq=${device.di_seq}" style="width:200px;height:200px;">
+		</c:if>
+		<c:if test="${empty device.di_imagename1}">
+			<img src="${pageContext.request.contextPath}/resources/images/basicdevice.PNG" style="width:200px;height:200px;">
 		</c:if>
 		</li>
 		<li><b>${device.d_name}</b></li>
@@ -54,3 +65,4 @@
 
 </c:if>
 </c:forEach>
+</div>
